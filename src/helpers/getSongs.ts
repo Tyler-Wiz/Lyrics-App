@@ -9,12 +9,3 @@ export const getAllTracks = async () => {
   });
   return tracks;
 };
-
-export const getTracks = async () => {
-  const singleTrack = await getAllTracks();
-  let filterTrack = [];
-  if (singleTrack.tag.includes("trending")) {
-    filterTrack.push(singleTrack);
-  }
-  return filterTrack;
-};
