@@ -9,15 +9,17 @@ import {
   RiSearchLine,
   RiLoginBoxLine,
   RiSettings5Line,
+  RiToggleLine,
 } from "react-icons/ri";
 import playStore from "@/assets/img/playStore.png";
+import Link from "next/link";
 
 const NavData = [
-  { name: "discover", icon: <RiCompassDiscoverLine /> },
-  { name: "trending", icon: <RiFireLine /> },
-  { name: "new", icon: <RiMusic2Line /> },
-  { name: "artist", icon: <RxPerson /> },
-  { name: "album", icon: <RiAlbumLine /> },
+  { name: "discover", icon: <RiCompassDiscoverLine />, path: "/" },
+  { name: "trending", icon: <RiFireLine />, path: "/" },
+  { name: "new lyrics", icon: <RiMusic2Line />, path: "/lyrics" },
+  { name: "artist", icon: <RxPerson />, path: "/" },
+  { name: "album", icon: <RiAlbumLine />, path: "/" },
 ];
 
 const userData = [
@@ -27,7 +29,7 @@ const userData = [
 
 const Nav = () => {
   return (
-    <nav className="h-screen shadow-md flex flex-col py-12 bg-navbackground justify-between font-Lato px-6">
+    <nav className="h-screen shadow-xl flex flex-col py-12 bg-navbackground justify-between font-Lato px-6">
       <div>
         <div className="relative">
           <input
@@ -42,14 +44,16 @@ const Nav = () => {
         <p className="text-sm my-8 text-lightBlack">Music</p>
         <ul className="flex flex-col gap-6">
           {NavData.map((item, index) => (
-            <li className="flex items-center gap-2 cursor-pointer" key={index}>
-              <p className="text-black font-regular text-xl capitalize">
-                {item.icon}
-              </p>
-              <p className="text-black text-[15px] font-regular capitalize ">
-                {item.name}
-              </p>
-            </li>
+            <Link href={item.path} key={index}>
+              <li className="flex items-center gap-2 cursor-pointer">
+                <p className="text-black font-regular text-xl capitalize">
+                  {item.icon}
+                </p>
+                <p className="text-black text-[15px] font-regular capitalize ">
+                  {item.name}
+                </p>
+              </li>
+            </Link>
           ))}
         </ul>
       </div>
@@ -65,6 +69,10 @@ const Nav = () => {
           </li>
         ))}
       </ul>
+      <div className="flex items-center gap-2">
+        <RiToggleLine size={30} className="cursor-pointer" />
+        <p>Dark Theme</p>
+      </div>
       <div className="relative w-48 h-auto cursor-pointer self-center">
         <Image src={playStore} alt="playLogo" />
       </div>

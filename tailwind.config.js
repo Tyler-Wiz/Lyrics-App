@@ -22,6 +22,7 @@ module.exports = {
       secondary: "#e2e6ea",
       navbackground: "#ffffff",
       lightBlack: "#8A8A8A",
+      lightGrey: "#969BA033",
     },
   },
   plugins: [],

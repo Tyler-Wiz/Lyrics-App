@@ -27,16 +27,6 @@ export { auth };
 
 export const db = getFirestore();
 
-export const getAllTracks = async () => {
-  const querySnapshot = await getDocs(collection(db, "Trending"));
-  return querySnapshot;
-};
-
-export const getAllNew = async () => {
-  const querySnapshot = await getDocs(collection(db, "NewRelease"));
-  return querySnapshot;
-};
-
 export const getAllPlaylist = async () => {
   const querySnapshot = await getDocs(collection(db, "Playlist"));
   return querySnapshot;
