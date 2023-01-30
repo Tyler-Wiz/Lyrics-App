@@ -12,7 +12,9 @@ type Props = {
 const SinglePlaylist: FC<Props> = ({ playlist, name }) => {
   return (
     <Layout title={name + " " + "Playlist"}>
-      <RenderLyricsList data={playlist} header={name} />
+      <div className="mt-14">
+        <RenderLyricsList data={playlist} header={name} />
+      </div>
     </Layout>
   );
 };

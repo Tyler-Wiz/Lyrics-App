@@ -1,44 +1,27 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { FC } from "react";
 import { getAllTracks } from "@/helpers/getFirebaseData";
 import Layout from "@/components/Layout";
 import { ISong } from "@/libs/interfaces";
 import parse from "html-react-parser";
 import Image from "next/image";
-import BackButton from "@/helpers/backButton";
 import Link from "next/link";
+import RelatedPost from "@/components/RelatedPost";
+import { shuffle } from "@/helpers/shuffleArray";
+import banner600 from "@/assets/img/banner.jpeg";
 
 type Props = {
   lyrics: ISong;
+  related: [];
 };
 
-const LyricsPage: FC<Props> = ({ lyrics }) => {
+const LyricsPage: FC<Props> = ({ lyrics, related }) => {
   return (
-    <Layout
-      title={
-        lyrics.trackName +
-        " Lyrics " +
-        " by " +
-        lyrics.artistName +
-        "  |  " +
-        "tooXclusive"
-      }>
-      <div className="flex item-center px-10 mt-10 gap-4">
-        <BackButton />
-        <div className="flex gap-2 font-Lato">
-          <Link href="/">
-            <p>Home «</p>
-          </Link>
-          <Link href="/lyrics">
-            <p>Lyrics «</p>
-          </Link>
-          <p>{lyrics.trackName}</p>
-        </div>
-      </div>
-      <div className="px-10 py-8 flex gap-4 shadow-sm">
-        <div className="relative w-72 h-72">
-          <Image
+    <Layout title={lyrics.trackName + " Lyrics " + " by " + lyrics.artistName}>
+      <div className="px-10 py-8 flex gap-4 shadow-sm font-Crimson">
+        <div className="w-72 h-72">
+          <img
             src={lyrics.artwork}
-            fill
             alt="lyrics artwork"
             className="rounded-xl"
           />
@@ -47,15 +30,25 @@ const LyricsPage: FC<Props> = ({ lyrics }) => {
           <div className="text-xl mb-2 font-semibold text-lightBlack">
             Lyrics
           </div>
-          <p className="text-2xl mb-2 font-semibold text-black">
+          <p className="text-2xl mb-2 font-semibold text-black dark:text-primary">
             {lyrics.trackName}
           </p>
-          <p className="text-lg mb-2 font-semibold text-lightBlack">
+          <p className="text-lg mb-2 font-semibold text-lightBlack ">
             {lyrics.artistName}
           </p>
         </div>
       </div>
-      <div className="lyrics font-Lato p-10">{parse(lyrics.lyrics)}</div>
+      <div className="grid grid-cols-6 p-10">
+        <div className="lyrics font-Crimson col-span-4">
+          {parse(lyrics.lyrics)}
+        </div>
+        <div className="col-span-2 sticky">
+          <div className="relative w-[300px] h-[600px]">
+            <Image src={banner600} fill alt="lyrics artwork" />
+          </div>
+          <RelatedPost data={related} />
+        </div>
+      </div>
     </Layout>
   );
 };
@@ -68,9 +61,16 @@ export const getServerSideProps = async (context: any) => {
   const data = await getAllTracks();
   const lyrics = data?.find((item: any) => item.id === id);
 
+  const relatedData = data.filter((item: any) => {
+    if (item.artistName?.includes(lyrics.artistName)) {
+      return item;
+    }
+  });
+  const related = shuffle(relatedData);
   return {
     props: {
       lyrics,
+      related,
     },
   };
 };

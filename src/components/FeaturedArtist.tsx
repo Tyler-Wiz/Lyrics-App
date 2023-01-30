@@ -13,7 +13,7 @@ const FeaturedArtist: FC<Props> = ({ data }) => {
       <h2 className="px-10 mt-10 text-xl text-black font-semibold">
         Top Artists
       </h2>
-      <div className="w-full mx-auto grid grid-cols-12 gap-6 px-10 mt-6 mb-20 font-Lato">
+      <div className="w-full mx-auto grid grid-cols-10 gap-6 px-10 mt-6 mb-20 font-Crimson">
         {data.map((item) => (
           <div key={item.id}>
             <img
@@ -21,7 +21,7 @@ const FeaturedArtist: FC<Props> = ({ data }) => {
               alt="artwork"
               className="rounded-full shadow-lg hover:scale-105 cursor-pointer"
             />
-            <p className="text-xs my-2 font-bold text-black capitalize text-center">
+            <p className="text-xs my-2 font-medium text-black capitalize text-center dark:text-primary">
               {item.name}
             </p>
           </div>

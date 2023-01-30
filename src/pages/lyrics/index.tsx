@@ -13,7 +13,9 @@ interface Props {
 const Trending: FC<Props> = ({ newLyrics }) => {
   return (
     <Layout title="New Lyrics">
-      <RenderLyricsList data={newLyrics} header="New Lyrics" />
+      <div className="mt-16">
+        <RenderLyricsList data={newLyrics} header="New Lyrics" />
+      </div>
     </Layout>
   );
 };
