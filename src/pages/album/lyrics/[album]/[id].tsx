@@ -1,25 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-import { NextPage } from "next";
-import { getAllTracks } from "@/helpers/getFirebaseData";
 import Layout from "@/components/layout/Layout";
-import { ISong } from "@/libs/interfaces";
+import { getLyricsFromAlbum } from "@/helpers/getFirebaseData";
+import { NextPage } from "next";
+import React from "react";
 import parse from "html-react-parser";
-import Image from "next/image";
-import Link from "next/link";
-import RelatedPost from "@/components/UI/RelatedPost";
-import { shuffle } from "@/helpers/shuffleArray";
 import banner600 from "@/assets/img/banner.jpeg";
+import Image from "next/image";
 
 type Props = {
-  lyrics: ISong;
+  lyrics: any;
   related: [];
 };
 
-const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
+const AlbumLyrics: NextPage<Props> = ({ lyrics, related }) => {
   const preDescription = lyrics.lyrics.replace(/(<([^>]+)>)/gi, "");
   const metaDescription = preDescription.substring(0, 120);
-
   return (
     <Layout
       title={lyrics.trackName + " Lyrics " + " by " + lyrics.artistName}
@@ -54,32 +49,29 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
           <div className="relative w-[300px] h-[600px]">
             <Image src={banner600} fill alt="lyrics artwork" />
           </div>
-          <RelatedPost data={related} />
         </div>
       </div>
     </Layout>
   );
 };
 
-export default LyricsPage;
+export default AlbumLyrics;
 
 export const getServerSideProps = async (context: any) => {
   const { params } = context;
-  const { id } = params;
-  const data = await getAllTracks();
-  const lyrics = data?.find((item: any) => item.id === id);
+  const { album, id } = params;
+  const getdata = await getLyricsFromAlbum(album);
 
-  const relatedData = data.filter((item: any) => {
-    if (item.artistName?.includes(lyrics.artistName)) {
-      return item;
-    }
+  let data: any = [];
+  getdata.forEach((lyrics) => {
+    data.push({ id: lyrics.id, ...lyrics.data() });
   });
+  const lyricsIni = data?.find((item: any) => item.id === id);
+  const lyrics = lyricsIni[0];
 
-  const related = shuffle(relatedData);
   return {
     props: {
       lyrics,
-      related,
     },
   };
 };

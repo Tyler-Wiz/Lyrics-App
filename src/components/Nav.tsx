@@ -17,7 +17,7 @@ const NavData = [
   { name: "discover", icon: <RiCompassDiscoverLine />, path: "/" },
   { name: "new lyrics", icon: <RiMusic2Line />, path: "/lyrics" },
   { name: "artist", icon: <RxPerson />, path: "/artist" },
-  { name: "album", icon: <RiAlbumLine />, path: "/" },
+  { name: "album", icon: <RiAlbumLine />, path: "/album/" },
   { name: "Playlist", icon: <MdQueueMusic />, path: "/playlist" },
 ];
 

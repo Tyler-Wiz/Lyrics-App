@@ -10,7 +10,12 @@ interface Props {
 const FeaturedAlbum: FC<Props> = ({ data }) => {
   return (
     <>
-      <RenderAlbumList data={data} />
+      <RenderAlbumList
+        data={data}
+        initialNumber={0}
+        finalNumber={4}
+        title="New Albums"
+      />
     </>
   );
 };

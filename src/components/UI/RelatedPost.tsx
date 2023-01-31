@@ -14,7 +14,7 @@ const RelatedPost: FC<Props> = ({ data }) => {
         Related Post
       </h2>
       <div className="w-full mx-auto flex flex-col font-Crimson gap-2 dark:text-primary ">
-        {data.slice(0, 5).map((item: ISong) => (
+        {data?.slice(0, 5).map((item: ISong) => (
           <Link key={item.id} href={`${"/lyrics/" + item.id}`}>
             <div className="py-2 flex gap-2 border-b-[.3px] items-center">
               <div className="relative w-16">

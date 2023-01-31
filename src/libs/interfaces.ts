@@ -26,4 +26,22 @@ export interface IAlbum {
     artwork: string;
     tag: string;
   };
+  id: string;
+}
+
+export interface IAlbumLyrics {
+  0: {
+    album: string;
+    artistName: string;
+    artwork: string;
+    category: string;
+    id: string;
+    lyrics: string;
+    playlist: string;
+    tag: string;
+    trackName: string;
+    youtube: string;
+    duration: string;
+  };
+  id: string;
 }

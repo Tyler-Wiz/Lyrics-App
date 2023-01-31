@@ -27,3 +27,8 @@ export const getAllAlbums = async () => {
   });
   return albums;
 };
+
+export const getLyricsFromAlbum = async (itemId: string) => {
+  const allDetails = await getDocs(collection(db, "Albums", itemId, "songs"));
+  return allDetails;
+};
