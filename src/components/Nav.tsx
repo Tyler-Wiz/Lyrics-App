@@ -16,7 +16,7 @@ import ThemeSwitcher from "@/theme/ThemeSwitcher";
 const NavData = [
   { name: "discover", icon: <RiCompassDiscoverLine />, path: "/" },
   { name: "new lyrics", icon: <RiMusic2Line />, path: "/lyrics" },
-  { name: "artist", icon: <RxPerson />, path: "/" },
+  { name: "artist", icon: <RxPerson />, path: "/artist" },
   { name: "album", icon: <RiAlbumLine />, path: "/" },
   { name: "Playlist", icon: <MdQueueMusic />, path: "/playlist" },
 ];

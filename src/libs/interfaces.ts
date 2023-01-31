@@ -9,6 +9,7 @@ export interface ISong {
   tag: string;
   trackName: string;
   youtube: string;
+  duration: string;
 }
 
 export interface IArtists {

@@ -1,16 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { FC } from "react";
+import React from "react";
+import { NextPage } from "next";
 import { ISong } from "@/libs/interfaces";
 import Link from "next/link";
 import { getAllTracks } from "@/helpers/getFirebaseData";
-import Layout from "@/components/Layout";
-import RenderLyricsList from "@/components/RenderLyricsList";
+import Layout from "@/components/layout/Layout";
+import RenderLyricsList from "@/components/UI/RenderLyricsList";
 
 interface Props {
   newLyrics: [ISong];
 }
 
-const Trending: FC<Props> = ({ newLyrics }) => {
+const Index: NextPage<Props> = ({ newLyrics }) => {
   return (
     <Layout title="New Lyrics">
       <div className="mt-16">
@@ -20,9 +21,9 @@ const Trending: FC<Props> = ({ newLyrics }) => {
   );
 };
 
-export default Trending;
+export default Index;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const data = await getAllTracks();
 
   const newLyrics = data.filter((item: any) => {

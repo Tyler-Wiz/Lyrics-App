@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import Layout from "@/components/Layout";
+import { NextPage } from "next";
+import Layout from "@/components/layout/Layout";
 import React from "react";
 import { playlistsData } from "@/data/data";
 import Link from "next/link";
@@ -7,7 +8,7 @@ import Image from "next/image";
 
 type Props = {};
 
-const Index = (props: Props) => {
+const Index: NextPage = (props: Props) => {
   return (
     <Layout title="Playlist">
       <>

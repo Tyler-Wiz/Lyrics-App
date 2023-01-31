@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { FC } from "react";
+import React from "react";
+import { NextPage } from "next";
 import { getAllTracks } from "@/helpers/getFirebaseData";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout/Layout";
 import { ISong } from "@/libs/interfaces";
 import parse from "html-react-parser";
 import Image from "next/image";
 import Link from "next/link";
-import RelatedPost from "@/components/RelatedPost";
+import RelatedPost from "@/components/UI/RelatedPost";
 import { shuffle } from "@/helpers/shuffleArray";
 import banner600 from "@/assets/img/banner.jpeg";
 
@@ -15,7 +16,7 @@ type Props = {
   related: [];
 };
 
-const LyricsPage: FC<Props> = ({ lyrics, related }) => {
+const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
   return (
     <Layout title={lyrics.trackName + " Lyrics " + " by " + lyrics.artistName}>
       <div className="px-10 py-8 flex gap-4 shadow-sm font-Crimson">

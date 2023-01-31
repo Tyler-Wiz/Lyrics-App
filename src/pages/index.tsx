@@ -1,26 +1,25 @@
-import Layout from "@/components/Layout";
-import NewSingle from "@/components/NewSingle";
-import Trending from "@/components/Trending";
-import { ISong } from "@/libs/interfaces";
-import { FC } from "react";
-import { IArtists } from "@/libs/interfaces";
-import FeaturedArtist from "@/components/FeaturedArtist";
+import { NextPage } from "next";
+import Layout from "@/components/layout/Layout";
+import NewSingle from "@/components/home/NewSingle";
+import Trending from "@/components/home/Trending";
+import FeaturedArtist from "@/components/home/FeaturedArtist";
+import FeaturedAlbum from "@/components/home/FeaturedAlbum";
+import Playlist from "@/components/home/Playlist";
+import { ISong, IArtists, IAlbum } from "@/libs/interfaces";
 import {
   getAllAlbums,
   getAllArtists,
   getAllTracks,
 } from "@/helpers/getFirebaseData";
-import FeaturedAlbum from "@/components/FeaturedAlbum";
-import Playlist from "@/components/Playlist";
 
 interface Iprops {
   trending: [ISong];
   newLyrics: [ISong];
   featuredArtist: [IArtists];
-  featuredAlbums: [];
+  featuredAlbums: [IAlbum];
 }
 
-const Home: FC<Iprops> = ({
+const Home: NextPage<Iprops> = ({
   newLyrics,
   trending,
   featuredArtist,
@@ -41,7 +40,7 @@ const Home: FC<Iprops> = ({
 
 export default Home;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const data = await getAllTracks();
   const artistData = await getAllArtists();
   const albumData = await getAllAlbums();

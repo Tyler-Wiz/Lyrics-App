@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import { NextPage } from "next";
+import React from "react";
 import { getAllTracks } from "@/helpers/getFirebaseData";
-import Layout from "@/components/Layout";
-import RenderLyricsList from "@/components/RenderLyricsList";
+import Layout from "@/components/layout/Layout";
+import RenderLyricsList from "@/components/UI/RenderLyricsList";
 import { ISong } from "@/libs/interfaces";
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
   name: string;
 };
 
-const SinglePlaylist: FC<Props> = ({ playlist, name }) => {
+const SinglePlaylist: NextPage<Props> = ({ playlist, name }) => {
   return (
     <Layout title={name + " " + "Playlist"}>
       <div className="mt-14">

@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { FC } from "react";
+import React from "react";
 import { IAlbum } from "@/libs/interfaces";
+import { FC } from "react";
 
-interface Props {
-  data: [];
-}
+type Props = {
+  data: [IAlbum];
+};
 
-const FeaturedAlbum: FC<Props> = ({ data }) => {
+const RenderAlbumList: FC<Props> = ({ data }) => {
   return (
     <>
       <h2 className="px-10 mt-16 text-xl text-black font-semibold dark:text-primary">
@@ -31,4 +32,4 @@ const FeaturedAlbum: FC<Props> = ({ data }) => {
   );
 };
 
-export default FeaturedAlbum;
+export default RenderAlbumList;
