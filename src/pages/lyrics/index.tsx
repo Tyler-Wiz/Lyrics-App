@@ -13,7 +13,7 @@ interface Props {
 
 const Index: NextPage<Props> = ({ newLyrics }) => {
   return (
-    <Layout title="New Lyrics">
+    <Layout title="New Lyrics" content="Latest Lyrics from Around The Africa">
       <div className="mt-16">
         <RenderLyricsList data={newLyrics} header="New Lyrics" />
       </div>

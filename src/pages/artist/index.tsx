@@ -12,7 +12,7 @@ type Props = {
 
 const Index: NextPage<Props> = ({ data }) => {
   return (
-    <Layout title="All Artists">
+    <Layout title="All Artists" content="All Latest Artists And Lyrics">
       <>
         <h2 className="px-10 mt-10 text-xl text-black font-semibold">
           Top Artists

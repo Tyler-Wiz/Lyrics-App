@@ -27,7 +27,9 @@ const Home: NextPage<Iprops> = ({
 }) => {
   return (
     <>
-      <Layout title="Home">
+      <Layout
+        title="Latest Music Lyrics"
+        content="tooXclusive Lyrics Website Provides the Latest Lyrics from Wizkid, Burna Boy, Asake, Ayra Starr, Black Sherif, Davido and Other Afrobeats">
         <FeaturedArtist data={featuredArtist} />
         <Trending data={trending} />
         <NewSingle data={newLyrics} />

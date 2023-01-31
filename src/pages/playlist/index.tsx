@@ -10,7 +10,7 @@ type Props = {};
 
 const Index: NextPage = (props: Props) => {
   return (
-    <Layout title="Playlist">
+    <Layout title="Playlist" content="All Playlist">
       <>
         <h2 className="px-10 mt-20 text-xl text-black font-semibold font-Crimson dark:text-primary">
           All Playlist

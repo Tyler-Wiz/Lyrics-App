@@ -17,8 +17,15 @@ type Props = {
 };
 
 const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
+  const preDescription = lyrics.lyrics.replace(/(<([^>]+)>)/gi, "");
+  const metaDescription = preDescription.substring(0, 120);
+
   return (
-    <Layout title={lyrics.trackName + " Lyrics " + " by " + lyrics.artistName}>
+    <Layout
+      title={lyrics.trackName + " Lyrics " + " by " + lyrics.artistName}
+      content={
+        lyrics.artistName + " " + lyrics.trackName + " - " + metaDescription
+      }>
       <div className="px-10 py-8 flex gap-4 shadow-sm font-Crimson">
         <div className="w-72 h-72">
           <img

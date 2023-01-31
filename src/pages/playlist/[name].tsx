@@ -12,7 +12,7 @@ type Props = {
 
 const SinglePlaylist: NextPage<Props> = ({ playlist, name }) => {
   return (
-    <Layout title={name + " " + "Playlist"}>
+    <Layout title={name + " " + "Playlist"} content={name + " " + "Playlist"}>
       <div className="mt-14">
         <RenderLyricsList data={playlist} header={name} />
       </div>

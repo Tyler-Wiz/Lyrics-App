@@ -19,7 +19,7 @@ type Props = {
 
 const ArtistPage: NextPage<Props> = ({ artist, artistSongs, artistAlbums }) => {
   return (
-    <Layout title={artist[0].name}>
+    <Layout title={artist[0].name} content={`Latest ${artist[0].name} lyrics`}>
       <div className="px-10 mt-10 flex items-center font-Crimson w-full gap-2">
         <div className="w-72 h-72">
           <img
