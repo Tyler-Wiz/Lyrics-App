@@ -15,7 +15,7 @@ const Index: NextPage = (props: Props) => {
         <h2 className="px-10 mt-20 text-xl text-black font-semibold font-Crimson dark:text-primary">
           All Playlist
         </h2>
-        <div className="px-10 grid grid-cols-4 gap-6 text-center mt-6 mb-20">
+        <div className="text-center mt-6 mb-20 px-5 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-6">
           {playlistsData.map((item, index) => (
             <div key={index}>
               <Link href={`${"/playlist/" + item.name}`}>

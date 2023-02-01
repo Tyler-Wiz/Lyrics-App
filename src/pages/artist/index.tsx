@@ -14,10 +14,10 @@ const Index: NextPage<Props> = ({ data }) => {
   return (
     <Layout title="All Artists" content="All Latest Artists And Lyrics">
       <>
-        <h2 className="px-10 mt-10 text-xl text-black font-semibold">
+        <h2 className="px-5 md:px-10 mt-10 text-xl text-black font-semibold">
           Top Artists
         </h2>
-        <div className="w-full mx-auto grid grid-cols-5 gap-6 px-10 mt-6 font-Crimson dark:text-primary">
+        <div className="w-full mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 px-5 md:px-10 mt-6 font-Crimson dark:text-primary">
           {data.map((item) => (
             <div key={item.id} className="my-4">
               <Link href={`${"/artist/" + item.id}`}>

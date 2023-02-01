@@ -9,7 +9,7 @@ type Props = {
 
 const RelatedPost: FC<Props> = ({ data }) => {
   return (
-    <div className="pr-20 mt-20">
+    <div className="md:pr-20 mt-20">
       <h2 className="text-lg text-black dark:text-primary font-semibold mb-4 font-Crimson capitalize ">
         Related Post
       </h2>

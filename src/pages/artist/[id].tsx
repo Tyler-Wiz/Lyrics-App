@@ -20,7 +20,7 @@ type Props = {
 const ArtistPage: NextPage<Props> = ({ artist, artistSongs, artistAlbums }) => {
   return (
     <Layout title={artist[0].name} content={`Latest ${artist[0].name} lyrics`}>
-      <div className="px-10 mt-10 flex items-center font-Crimson w-full gap-2">
+      <div className="px-10 mt-10 flex flex-col md:flex-row md:text-justify text-center items-center font-Crimson w-full gap-2">
         <div className="w-72 h-72">
           <img
             src={artist[0].url}
@@ -28,7 +28,7 @@ const ArtistPage: NextPage<Props> = ({ artist, artistSongs, artistAlbums }) => {
             className="rounded-full object-cover h-full"
           />
         </div>
-        <div className="w-3/4">
+        <div className="md:w-3/4">
           <p className="text-3xl">{artist[0].name}</p>
           <div className="my-2 flex items-center gap-3">
             <p className="text-lg">
@@ -52,7 +52,12 @@ const ArtistPage: NextPage<Props> = ({ artist, artistSongs, artistAlbums }) => {
       </div>
       <div>
         {artistAlbums.length > 0 ? (
-          <RenderAlbumList data={artistAlbums} />
+          <RenderAlbumList
+            data={artistAlbums}
+            initialNumber={0}
+            finalNumber={artistAlbums.length}
+            title="Albums"
+          />
         ) : null}
       </div>
     </Layout>

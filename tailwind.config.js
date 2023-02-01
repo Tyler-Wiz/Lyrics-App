@@ -8,6 +8,17 @@ module.exports = {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  extend: {
+    keyframes: {
+      slideIn: {
+        "0%": { transform: "translateX(500px)", opacity: "0" },
+        "100% ": { transform: "translateX(0)", opacity: "1" },
+      },
+    },
+    animation: {
+      slide: "slideIn 500ms ease-in-out",
+    },
+  },
   darkMode: "class",
   theme: {
     fontFamily: {

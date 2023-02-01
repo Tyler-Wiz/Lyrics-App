@@ -5,8 +5,9 @@ import { FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import { AllSongsConfig } from "@/firebase/allSongs-config";
 import Link from "next/link";
+import MobileNav from "./MobileNav";
 
-const SearchLyrics = () => {
+const TopNav = () => {
   const [filteredData, setFilteredData] = useState<string[]>([]);
   const [wordEntered, setWordEntered] = useState("");
   const [allSongs] = AllSongsConfig();
@@ -29,8 +30,9 @@ const SearchLyrics = () => {
   };
 
   return (
-    <div className="w-full px-16 flex justify-between items-center py-4 sticky border-b-[.3px] border-b-lightGrey">
-      <div className="relative w-2/5 group">
+    <div className="w-full md:px-16 px-5 flex justify-between items-center py-4 sticky border-b-[.3px] border-b-lightGrey">
+      <MobileNav />
+      <div className="relative w-3/5 group">
         <input
           className="w-full outline-none py-2 rounded-lg font-Crimson text-black bg-lightGrey dark:text-primary px-2 text-xs"
           placeholder="Search"
@@ -75,4 +77,4 @@ const SearchLyrics = () => {
   );
 };
 
-export default SearchLyrics;
+export default TopNav;

@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { IAlbumLyrics } from "@/libs/interfaces";
-import Image from "next/image";
 import Link from "next/link";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { AiOutlineHeart, AiOutlineMore } from "react-icons/ai";
-import Pagination from "./Pagination";
 
 type Props = {
   data: [IAlbumLyrics];
@@ -29,7 +27,7 @@ const AlbumLyrics: FC<Props> = ({ data, id }) => {
           let number = index + 1;
           return (
             <Link key={index} href={`${`/album/lyrics/${id}/` + item.id}`}>
-              <div className="flex gap-2 item[0]s-center py-1">
+              <div className="flex gap-2 items-center py-1">
                 <p className="w-[2%] text-sm text-lightBlack">{number}</p>
                 <div className="flex w-[5%]">
                   <div className="w-12 h-12">

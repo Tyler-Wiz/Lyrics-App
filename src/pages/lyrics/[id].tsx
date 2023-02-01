@@ -26,7 +26,7 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
       content={
         lyrics.artistName + " " + lyrics.trackName + " - " + metaDescription
       }>
-      <div className="px-10 py-8 flex gap-4 shadow-sm font-Crimson">
+      <div className="px-10 py-8 flex flex-col items-center md:flex-row gap-4 shadow-sm font-Crimson">
         <div className="w-72 h-72">
           <img
             src={lyrics.artwork}
@@ -34,7 +34,7 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
             className="rounded-xl"
           />
         </div>
-        <div className="py-10">
+        <div className="py-10 text-center md:text-justify">
           <div className="text-xl mb-2 font-semibold text-lightBlack">
             Lyrics
           </div>
@@ -46,11 +46,11 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-6 p-10">
-        <div className="lyrics font-Crimson col-span-4">
+      <div className="grid md:grid-cols-6 md:p-10 p-5 md:text-justify ">
+        <div className="lyrics font-Crimson text-center md:text-justify  col-span-4">
           {parse(lyrics.lyrics)}
         </div>
-        <div className="col-span-2 sticky">
+        <div className="col-span-2 ">
           <div className="relative w-[300px] h-[600px]">
             <Image src={banner600} fill alt="lyrics artwork" />
           </div>
