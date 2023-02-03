@@ -20,7 +20,7 @@ const NavData = [
   { name: "artists", icon: <RxPerson />, path: "/artist" },
   { name: "albums", icon: <RiAlbumLine />, path: "/album/" },
   { name: "Playlist", icon: <MdQueueMusic />, path: "/playlist" },
-  { name: "Favorite", icon: <RiHeartLine />, path: "/playlist" },
+  { name: "Favorite", icon: <RiHeartLine />, path: "/favorite" },
 ];
 
 const userData = [

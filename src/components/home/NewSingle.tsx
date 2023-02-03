@@ -13,7 +13,7 @@ const NewSingle: FC<Props> = ({ data }) => {
       <h2 className="px-5 md:px-10 mt-16 text-xl text-black font-semibold dark:text-primary">
         New Lyrics
       </h2>
-      <div className="w-full mx-auto flex md:grid overflow-x-auto md:grid-cols-5 gap-6 px-5 md:px-10 mt-6 mb-20 font-Crimson">
+      <div className="container scrollbar-hide mx-auto flex md:grid overflow-auto md:grid-cols-5 gap-6 px-5 md:px-10 mt-6 mb-20 font-Crimson">
         {data.slice(0, 5).map((item: ISong) => (
           <div key={item.id}>
             <Link href={`${"/lyrics/" + item.id}`}>

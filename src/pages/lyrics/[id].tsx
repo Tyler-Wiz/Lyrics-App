@@ -6,10 +6,12 @@ import Layout from "@/components/layout/Layout";
 import { ISong } from "@/libs/interfaces";
 import parse from "html-react-parser";
 import Image from "next/image";
-import Link from "next/link";
 import RelatedPost from "@/components/UI/RelatedPost";
 import { shuffle } from "@/helpers/shuffleArray";
 import banner600 from "@/assets/img/banner.jpeg";
+import { useDispatch } from "react-redux";
+import { AddFavorite } from "@/store/reducers/favoriteSlice";
+import { AiOutlineHeart } from "react-icons/ai";
 
 type Props = {
   lyrics: ISong;
@@ -19,6 +21,8 @@ type Props = {
 const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
   const preDescription = lyrics.lyrics.replace(/(<([^>]+)>)/gi, "");
   const metaDescription = preDescription.substring(0, 120);
+
+  const dispatch = useDispatch();
 
   return (
     <Layout
@@ -44,6 +48,11 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
           <p className="text-lg mb-2 font-semibold text-lightBlack ">
             {lyrics.artistName}
           </p>
+          <AiOutlineHeart
+            size={20}
+            onClick={() => dispatch(AddFavorite(lyrics))}
+            className="cursor-pointer my-3"
+          />
         </div>
       </div>
       <div className="grid md:grid-cols-6 md:p-10 p-5 md:text-justify ">
