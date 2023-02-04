@@ -2,10 +2,9 @@
 import React from "react";
 import { NextPage } from "next";
 import { ISong } from "@/libs/interfaces";
-import Link from "next/link";
-import { getAllTracks } from "@/helpers/getFirebaseData";
 import Layout from "@/components/layout/Layout";
 import RenderLyricsList from "@/components/UI/RenderLyricsList";
+import { getSongs } from "@/api/data";
 
 interface Props {
   newLyrics: [ISong];
@@ -24,7 +23,7 @@ const Index: NextPage<Props> = ({ newLyrics }) => {
 export default Index;
 
 export async function getServerSideProps() {
-  const data = await getAllTracks();
+  const data = await getSongs();
 
   const newLyrics = data.filter((item: any) => {
     if (item.category.includes("new")) {

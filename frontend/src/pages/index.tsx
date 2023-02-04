@@ -6,11 +6,7 @@ import FeaturedArtist from "@/components/home/FeaturedArtist";
 import FeaturedAlbum from "@/components/home/FeaturedAlbum";
 import Playlist from "@/components/home/Playlist";
 import { ISong, IArtists, IAlbum } from "@/libs/interfaces";
-import {
-  getAllAlbums,
-  getAllArtists,
-  getAllTracks,
-} from "@/helpers/getFirebaseData";
+import { getAlbums, getArtists, getSongs } from "@/api/data";
 
 interface Iprops {
   trending: [ISong];
@@ -43,9 +39,9 @@ const Home: NextPage<Iprops> = ({
 export default Home;
 
 export async function getServerSideProps() {
-  const data = await getAllTracks();
-  const artistData = await getAllArtists();
-  const albumData = await getAllAlbums();
+  const data = await getSongs();
+  const artists = await getArtists();
+  const albums = await getAlbums();
 
   const newLyrics = data.filter((item: any) => {
     if (item.category?.includes("new")) {
@@ -57,14 +53,14 @@ export async function getServerSideProps() {
       return item;
     }
   });
-  const featuredArtist = artistData.filter((item: any) => {
+  const featuredArtist = artists.filter((item: any) => {
     if (item.tag?.includes("trending")) {
       return item;
     }
   });
 
-  const featuredAlbums = albumData.filter((item: any) => {
-    if (item[0].tag?.includes("featured")) {
+  const featuredAlbums = albums.filter((item: any) => {
+    if (item.tag?.includes("featured")) {
       return item;
     }
   });

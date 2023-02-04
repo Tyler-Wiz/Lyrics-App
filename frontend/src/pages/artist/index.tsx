@@ -5,12 +5,13 @@ import Layout from "@/components/layout/Layout";
 import { getAllArtists } from "@/helpers/getFirebaseData";
 import { IArtists } from "@/libs/interfaces";
 import Link from "next/link";
+import { getArtists } from "@/api/data";
 
 type Props = {
-  data: [IArtists];
+  artists: [IArtists];
 };
 
-const Index: NextPage<Props> = ({ data }) => {
+const Index: NextPage<Props> = ({ artists }) => {
   return (
     <Layout title="All Artists" content="All Latest Artists And Lyrics">
       <>
@@ -18,7 +19,7 @@ const Index: NextPage<Props> = ({ data }) => {
           Top Artists
         </h2>
         <div className="w-full mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 px-5 md:px-10 mt-6 font-Crimson dark:text-primary">
-          {data.map((item) => (
+          {artists.map((item) => (
             <div key={item.id} className="my-4">
               <Link href={`${"/artist/" + item.id}`}>
                 <div className="w-48 h-48">
@@ -43,11 +44,11 @@ const Index: NextPage<Props> = ({ data }) => {
 export default Index;
 
 export async function getServerSideProps() {
-  const data = await getAllArtists();
+  const artists = await getArtists();
 
   return {
     props: {
-      data,
+      artists,
     },
   };
 }

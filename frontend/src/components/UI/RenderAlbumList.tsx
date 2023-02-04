@@ -27,16 +27,14 @@ const RenderAlbumList: FC<Props> = ({
           <Link key={index} href={`${"/album/" + item.id}`}>
             <div>
               <img
-                src={item[0].artwork}
+                src={item.artwork}
                 alt="artwork"
                 className="rounded-lg shadow-lg hover:scale-95 cursor-pointer"
               />
               <p className="text-sm my-2 font-medium text-black dark:text-primary">
-                {item[0].AlbumName}
+                {item.albumName}
               </p>
-              <p className="text-sm my-2 text-lightBlack">
-                {item[0].artistName}
-              </p>
+              <p className="text-sm my-2 text-lightBlack">{item.artistName}</p>
             </div>
           </Link>
         ))}

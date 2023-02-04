@@ -3,14 +3,16 @@ import React from "react";
 import { RiSearchLine } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
-import { AllSongsConfig } from "@/firebase/allSongs-config";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
+import { useGetAllSongsQuery } from "@/store/reducers/songsApi";
 
 const TopNav = () => {
   const [filteredData, setFilteredData] = useState<string[]>([]);
   const [wordEntered, setWordEntered] = useState("");
-  const [allSongs] = AllSongsConfig();
+
+  const data = useGetAllSongsQuery();
+  const allSongs = data.currentData;
 
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;

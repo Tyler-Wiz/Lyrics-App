@@ -5,7 +5,7 @@
   "main": "./src/server.js",
   "scripts": {
     "build": "tsc",
-    "devStart": "nodemon server.js"
+    "server": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

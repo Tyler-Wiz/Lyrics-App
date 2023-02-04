@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { NextPage } from "next";
-import { getAllTracks } from "@/helpers/getFirebaseData";
 import Layout from "@/components/layout/Layout";
 import { ISong } from "@/libs/interfaces";
 import parse from "html-react-parser";
@@ -12,6 +11,7 @@ import banner600 from "@/assets/img/banner.jpeg";
 import { useDispatch } from "react-redux";
 import { AddFavorite } from "@/store/reducers/favoriteSlice";
 import { AiOutlineHeart } from "react-icons/ai";
+import { getSongs } from "@/api/data";
 
 type Props = {
   lyrics: ISong;
@@ -75,7 +75,7 @@ export default LyricsPage;
 export const getServerSideProps = async (context: any) => {
   const { params } = context;
   const { id } = params;
-  const data = await getAllTracks();
+  const data = await getSongs();
   const lyrics = data?.find((item: any) => item.id === id);
 
   const relatedData = data.filter((item: any) => {

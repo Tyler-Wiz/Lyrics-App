@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React, { FC } from "react";
-import Nav from "../Nav";
-import TopNav from "../TopNav";
+import TopNav from "../nav/TopNav";
 import { year } from "@/helpers/getYear";
+import Nav from "../nav/Nav";
 
 type Props = {
   title: string;

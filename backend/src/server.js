@@ -1,10 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const { Albums } = require("./firebase");
 const { Song } = require("../models/songs");
 const { Artist } = require("../models/artists");
+const { Album } = require("../models/albums");
 const newArtist = require("../routes/newArtist");
+const newAlbum = require("../routes/newAlbum");
 
 require("dotenv").config();
 
@@ -31,12 +32,7 @@ mongoose
   .catch((error) => console.log("Mongo DB connect succesful", error));
 
 app.use("/post/artist", newArtist);
-
-app.get("/albums", async (req, res) => {
-  const snapshot = await Albums.get();
-  const songs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  res.send(songs);
-});
+app.use("/post/album", newAlbum);
 
 app.get("/api/songs", (req, res) => {
   Song.find()
@@ -50,6 +46,16 @@ app.get("/api/songs", (req, res) => {
 
 app.get("/api/artists", (req, res) => {
   Artist.find()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get("/api/albums", (req, res) => {
+  Album.find()
     .then((result) => {
       res.send(result);
     })

@@ -1,21 +1,21 @@
+import { getAlbums } from "@/api/data";
 import Layout from "@/components/layout/Layout";
 import RenderAlbumList from "@/components/UI/RenderAlbumList";
-import { getAllAlbums } from "@/helpers/getFirebaseData";
 import { IAlbum } from "@/libs/interfaces";
 import { NextPage } from "next";
 import React from "react";
 
 interface Props {
-  data: [IAlbum];
+  albums: [IAlbum];
 }
 
-const Index: NextPage<Props> = ({ data }) => {
+const Index: NextPage<Props> = ({ albums }) => {
   return (
     <Layout title="All Albums" content="All Albums">
       <RenderAlbumList
-        data={data}
+        data={albums}
         initialNumber={0}
-        finalNumber={data.length}
+        finalNumber={albums.length}
         title="All Albums"
       />
     </Layout>
@@ -25,11 +25,11 @@ const Index: NextPage<Props> = ({ data }) => {
 export default Index;
 
 export async function getServerSideProps() {
-  const data = await getAllAlbums();
+  const albums = await getAlbums();
 
   return {
     props: {
-      data,
+      albums,
     },
   };
 }

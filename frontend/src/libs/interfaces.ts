@@ -21,28 +21,18 @@ export interface IArtists {
 }
 
 export interface IAlbum {
-  0: {
-    AlbumName: string;
-    artistName: string;
-    artwork: string;
-    tag: string;
-  };
+  albumName: string;
+  artistName: string;
+  artwork: string;
+  tag: string;
   id: string;
 }
 
-export interface IAlbumLyrics {
-  0: {
-    album: string;
-    artistName: string;
-    artwork: string;
-    category: string;
-    id: string;
-    lyrics: string;
-    playlist: string;
-    tag: string;
-    trackName: string;
-    youtube: string;
-    duration: string;
-  };
+export interface IAlbumContent {
+  albumName: string;
+  artistName: string;
+  artwork: string;
+  tag: string;
   id: string;
+  songs: [ISong];
 }

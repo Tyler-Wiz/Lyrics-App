@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import React from "react";
-import { getAllTracks } from "@/helpers/getFirebaseData";
 import Layout from "@/components/layout/Layout";
 import RenderLyricsList from "@/components/UI/RenderLyricsList";
 import { ISong } from "@/libs/interfaces";
+import { getSongs } from "@/api/data";
 
 type Props = {
   playlist: [ISong];
@@ -25,7 +25,7 @@ export default SinglePlaylist;
 export const getServerSideProps = async (context: any) => {
   const { params } = context;
   const { name } = params;
-  const data = await getAllTracks();
+  const data = await getSongs();
 
   const playlist = data.filter((item: any) => {
     if (item.playlist?.includes(name)) {

@@ -1,15 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
 import Layout from "@/components/layout/Layout";
-import {
-  getAllTracks,
-  getAllAlbums,
-  getAllArtists,
-} from "@/helpers/getFirebaseData";
-import React, { FC } from "react";
+import React from "react";
 import { ISong, IArtists, IAlbum } from "@/libs/interfaces";
 import ArtistLyrics from "@/components/UI/ArtistLyrics";
 import RenderAlbumList from "@/components/UI/RenderAlbumList";
+import { getAlbums, getArtists, getSongs } from "@/api/data";
 
 type Props = {
   artist: [IArtists];
@@ -69,9 +65,10 @@ export default ArtistPage;
 export const getServerSideProps = async (context: any) => {
   const { params } = context;
   const { id } = params;
-  const data = await getAllTracks();
-  const albumData = await getAllAlbums();
-  const artistData = await getAllArtists();
+
+  const data = await getSongs();
+  const artistData = await getArtists();
+  const albumData = await getAlbums();
 
   const artist = artistData.filter((item: any) => {
     if (item.id?.includes(id)) {
@@ -85,7 +82,7 @@ export const getServerSideProps = async (context: any) => {
   });
 
   const artistAlbums = albumData.filter((item: any) => {
-    if (item[0].artistName?.includes(artist[0].name)) {
+    if (item.artistName?.includes(artist[0].name)) {
       return item;
     }
   });
