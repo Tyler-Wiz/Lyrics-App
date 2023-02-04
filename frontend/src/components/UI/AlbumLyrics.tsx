@@ -7,17 +7,19 @@ import { AiOutlineHeart, AiOutlineMore } from "react-icons/ai";
 type Props = {
   data: [ISong];
   id: string;
+  albumName: string;
+  albumArtwork: string;
 };
 
-const AlbumLyrics: FC<Props> = ({ data, id }) => {
+const AlbumLyrics: FC<Props> = ({ data, id, albumName, albumArtwork }) => {
   return (
     <div>
       <div className="flex my-10 items-center gap-4">
         <div className="w-72 h-72">
-          <img src={data[0].artwork} alt="Album image" />
+          <img src={albumArtwork} alt="Album image" />
         </div>
         <div className="font-Crimson capitalize">
-          <p className="text-2xl">Album Name: {data[0].album} </p>
+          <p className="text-2xl">Album Name: {albumName} </p>
           <p>Songs: {data.length}</p>
           <p>release Date: 2022 </p>
         </div>

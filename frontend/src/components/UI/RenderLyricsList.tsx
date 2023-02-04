@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import { ISong } from "@/libs/interfaces";
 
 interface Props {
-  data: [ISong];
+  data: ISong[];
   header: string;
 }
 

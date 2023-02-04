@@ -2,8 +2,11 @@
 import { ISong } from "@/libs/interfaces";
 import Link from "next/link";
 import React, { FC, useState } from "react";
-import { AiOutlineHeart, AiOutlineMore } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineMore, AiFillHeart } from "react-icons/ai";
 import Pagination from "./Pagination";
+import { RootState } from "@/store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AddFavorite } from "@/store/reducers/favoriteSlice";
 
 type Props = {
   data: [ISong];
@@ -22,31 +25,40 @@ const ArtistLyrics: FC<Props> = ({ data }) => {
     indexOfLastProduct
   );
 
+  const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.favorite.items);
+
   return (
     <div>
       {pageProducts.map((item, index) => {
         let number = index + 1;
+        const ItemIndex = items.find((x) => x.id === item.id);
         return (
-          <Link key={item.id} href={`${"/lyrics/" + item.id}`}>
-            <div className="flex gap-2 items-center py-1">
-              <p className="w-[2%] text-sm text-lightBlack">{number}</p>
-              <div className="flex w-[5%]">
-                <div className="w-12 h-12">
-                  <img src={item.artwork} alt="artist Image" />
-                </div>
+          <div key={item.id} className="flex gap-2 items-center py-1">
+            <p className="w-[2%] text-sm text-lightBlack">{number}</p>
+            <Link href={`${"/lyrics/" + item.id}`} className="flex w-[5%]">
+              <div className="w-12 h-12">
+                <img src={item.artwork} alt="artist Image" />
               </div>
-              <div className="w-[40%]">
-                <p className="text-sm">{item.trackName}</p>
-              </div>
-              <div className="w-[40%]">
-                <p className="text-sm">{item.artistName}</p>
-              </div>
-              <div className="w-[13%] flex gap-2">
-                <AiOutlineHeart />
-                <AiOutlineMore />
-              </div>
+            </Link>
+            <div className="w-[40%]">
+              <p className="text-sm">{item.trackName}</p>
             </div>
-          </Link>
+            <div className="w-[40%]">
+              <p className="text-sm">{item.artistName}</p>
+            </div>
+            <div className="w-[13%] flex gap-2 items-center">
+              {ItemIndex ? (
+                <AiFillHeart className="my-3 text-accentColor" />
+              ) : (
+                <AiOutlineHeart
+                  onClick={() => dispatch(AddFavorite(item))}
+                  className="cursor-pointer my-3 text-accentColor"
+                />
+              )}
+              <AiOutlineMore />
+            </div>
+          </div>
         );
       })}
       {data.length <= 10 ? null : (

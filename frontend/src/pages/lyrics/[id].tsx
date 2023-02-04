@@ -8,10 +8,11 @@ import Image from "next/image";
 import RelatedPost from "@/components/UI/RelatedPost";
 import { shuffle } from "@/helpers/shuffleArray";
 import banner600 from "@/assets/img/banner.jpeg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AddFavorite } from "@/store/reducers/favoriteSlice";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { getSongs } from "@/api/data";
+import { RootState } from "@/store/store";
 
 type Props = {
   lyrics: ISong;
@@ -23,6 +24,8 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
   const metaDescription = preDescription.substring(0, 120);
 
   const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.favorite.items);
+  const ItemIndex = items.find((x) => x.id === lyrics.id);
 
   return (
     <Layout
@@ -48,11 +51,15 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
           <p className="text-lg mb-2 font-semibold text-lightBlack ">
             {lyrics.artistName}
           </p>
-          <AiOutlineHeart
-            size={20}
-            onClick={() => dispatch(AddFavorite(lyrics))}
-            className="cursor-pointer my-3"
-          />
+          {ItemIndex ? (
+            <AiFillHeart size={25} className="my-3 text-accentColor" />
+          ) : (
+            <AiOutlineHeart
+              size={25}
+              onClick={() => dispatch(AddFavorite(lyrics))}
+              className="cursor-pointer my-3 text-accentColor"
+            />
+          )}
         </div>
       </div>
       <div className="grid md:grid-cols-6 md:p-10 p-5 md:text-justify ">

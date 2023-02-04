@@ -13,13 +13,20 @@ type Props = {
 
 const AlbumPage: NextPage<Props> = ({ selectedAlbum, id }) => {
   const data = selectedAlbum?.songs;
+  const albumName = selectedAlbum?.albumName;
+  const albumArtwork = selectedAlbum?.artwork;
 
   return (
     <Layout
       title={`${selectedAlbum.albumName} | ${selectedAlbum.artistName}`}
       content={`${selectedAlbum.albumName} | ${selectedAlbum.artistName}`}>
       <div className="px-20 mt-10">
-        <AlbumLyrics data={data} id={id} />
+        <AlbumLyrics
+          data={data}
+          id={id}
+          albumName={albumName}
+          albumArtwork={albumArtwork}
+        />
       </div>
     </Layout>
   );

@@ -19,21 +19,11 @@ export const favoriteSlice = createSlice({
   initialState,
   reducers: {
     AddFavorite: (state, action: PayloadAction<ISong>) => {
-      const itemIndex = state.items.findIndex(
-        (x) => x.id === action.payload.id
-      );
-      if (itemIndex >= 0) {
-        state.items[itemIndex].itemQuantity += 1;
-        toast.success("Already Added to Favorite", {
-          position: "bottom-left",
-        });
-      } else {
-        const inititalProduct = { ...action.payload, itemQuantity: 1 };
-        state.items.push(inititalProduct);
-        toast.success("Added to favorite", {
-          position: "bottom-left",
-        });
-      }
+      const inititalProduct = { ...action.payload };
+      state.items.push(inititalProduct);
+      toast.success("Added to favorite", {
+        position: "bottom-left",
+      });
       localStorage.setItem("items", JSON.stringify(state.items));
     },
     removeFavorite: (state, action: PayloadAction<ISong>) => {
