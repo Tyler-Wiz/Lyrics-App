@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { NextPage } from "next";
-import Layout from "@/components/layout/Layout";
+import Layout from "@/components/client/layout/Layout";
 import { ISong } from "@/libs/interfaces";
 import parse from "html-react-parser";
 import Image from "next/image";
-import RelatedPost from "@/components/ui/RelatedPost";
+import RelatedPost from "@/components/client/ui/RelatedPost";
 import { shuffle } from "@/helpers/shuffleArray";
 import banner600 from "@/assets/img/banner.jpeg";
 import { useDispatch, useSelector } from "react-redux";

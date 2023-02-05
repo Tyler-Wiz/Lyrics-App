@@ -6,6 +6,9 @@ const { Artist } = require("../models/artists");
 const { Album } = require("../models/albums");
 const newArtist = require("../routes/newArtist");
 const newAlbum = require("../routes/newAlbum");
+const registerUser = require("../routes/registerUser");
+const loginUser = require("../routes/loginUser");
+const editUser = require("../routes/editUser");
 
 require("dotenv").config();
 
@@ -33,6 +36,9 @@ mongoose
 
 app.use("/post/artist", newArtist);
 app.use("/post/album", newAlbum);
+app.use("/register", registerUser);
+app.use("/login", loginUser);
+app.use("/update", editUser);
 
 app.get("/api/songs", (req, res) => {
   Song.find()

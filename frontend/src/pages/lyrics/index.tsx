@@ -2,8 +2,8 @@
 import React from "react";
 import { NextPage } from "next";
 import { ISong } from "@/libs/interfaces";
-import Layout from "@/components/layout/Layout";
-import RenderLyricsList from "@/components/ui/RenderLyricsList";
+import Layout from "@/components/client/layout/Layout";
+import RenderLyricsList from "@/components/client/ui/RenderLyricsList";
 import { getSongs } from "@/api/data";
 
 interface Props {

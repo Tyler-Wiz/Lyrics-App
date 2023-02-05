@@ -22,6 +22,7 @@ module.exports = {
   theme: {
     fontFamily: {
       Lato: ["Lato"],
+      Poppins: ["Poppins", "san serif"],
       Crimson: ["Crimson+Pro"],
     },
     extend: {},
@@ -36,6 +37,7 @@ module.exports = {
       lightBlack: "#8A8A8A",
       lightGrey: "#969BA033",
       accentColor: "#2C67A8",
+      error: "#A30000",
     },
   },
   plugins: [],

@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
-import Layout from "@/components/layout/Layout";
+import Layout from "@/components/client/layout/Layout";
 import React from "react";
 import { ISong, IArtists, IAlbum } from "@/libs/interfaces";
-import ArtistLyrics from "@/components/ui/ArtistLyrics";
-import RenderAlbumList from "@/components/ui/RenderAlbumList";
+import ArtistLyrics from "@/components/client/ui/ArtistLyrics";
+import RenderAlbumList from "@/components/client/ui/RenderAlbumList";
 import { getAlbums, getArtists, getSongs } from "@/api/data";
 
 type Props = {

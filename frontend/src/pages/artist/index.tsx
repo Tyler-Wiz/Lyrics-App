@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { NextPage } from "next";
-import Layout from "@/components/layout/Layout";
-import { getAllArtists } from "@/helpers/getFirebaseData";
+import Layout from "@/components/client/layout/Layout";
 import { IArtists } from "@/libs/interfaces";
 import Link from "next/link";
 import { getArtists } from "@/api/data";

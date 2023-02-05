@@ -1,10 +1,10 @@
 import { NextPage } from "next";
-import Layout from "@/components/layout/Layout";
-import NewSingle from "@/components/home/NewSingle";
-import Trending from "@/components/home/Trending";
-import FeaturedArtist from "@/components/home/FeaturedArtist";
-import FeaturedAlbum from "@/components/home/FeaturedAlbum";
-import Playlist from "@/components/home/Playlist";
+import Layout from "@/components/client/layout/Layout";
+import NewSingle from "@/components/client/home/NewSingle";
+import Trending from "@/components/client/home/Trending";
+import FeaturedArtist from "@/components/client/home/FeaturedArtist";
+import FeaturedAlbum from "@/components/client/home/FeaturedAlbum";
+import Playlist from "@/components/client/home/Playlist";
 import { ISong, IArtists, IAlbum } from "@/libs/interfaces";
 import { getAlbums, getArtists, getSongs } from "@/api/data";
 
