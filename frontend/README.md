@@ -26,3 +26,10 @@ NextJS
 - Lyrics Page
 - Artists Page
 - Admin Dashboard
+  - LoginScreen
+  - Register Screen
+  - UserModel and Redux Slice (Backend and Frontend) (joi, jwtToken)
+  - Admin Layout
+  - Pages - Users, Songs, Albums, Artists (Get All Data from MongoDB)
+  - Upload - Form
+- Sitemap

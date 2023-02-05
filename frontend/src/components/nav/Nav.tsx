@@ -5,8 +5,6 @@ import {
   RiCompassDiscoverLine,
   RiMusic2Line,
   RiAlbumLine,
-  RiLoginBoxLine,
-  RiSettings5Line,
   RiHeartLine,
 } from "react-icons/ri";
 import { MdQueueMusic } from "react-icons/md";
@@ -21,11 +19,6 @@ const NavData = [
   { name: "albums", icon: <RiAlbumLine />, path: "/album/" },
   { name: "Playlist", icon: <MdQueueMusic />, path: "/playlist" },
   { name: "Favorite", icon: <RiHeartLine />, path: "/favorite" },
-];
-
-const userData = [
-  { name: "Preference", icon: <RiSettings5Line /> },
-  { name: "login", icon: <RiLoginBoxLine /> },
 ];
 
 const Nav = () => {
@@ -50,18 +43,6 @@ const Nav = () => {
       </div>
       <div>
         <p className="text-sm my-8 text-lightBlack">Settings</p>
-        <ul className="flex flex-col gap-4 font-Crimson mb-8">
-          {userData.map((item, index) => (
-            <li className="flex items-center gap-2 cursor-pointer" key={index}>
-              <p className="text-black font-regular text-xl capitalize dark:text-primary">
-                {item.icon}
-              </p>
-              <p className="text-black text-[15px] font-regular capitalize dark:text-primary">
-                {item.name}
-              </p>
-            </li>
-          ))}
-        </ul>
         <div className="flex items-center gap-2">
           <ThemeSwitcher />
           <p className=" text-black dark:text-primary">Dark Theme</p>

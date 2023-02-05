@@ -72,9 +72,6 @@ const TopNav = () => {
           </div>
         </div>
       </div>
-      <div>
-        <FaUserCircle size={30} />
-      </div>
     </div>
   );
 };

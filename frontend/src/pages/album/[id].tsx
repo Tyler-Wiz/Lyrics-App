@@ -4,7 +4,7 @@ import React from "react";
 import { IAlbumContent } from "@/libs/interfaces";
 import Layout from "@/components/layout/Layout";
 import { getAlbums } from "@/api/data";
-import AlbumLyrics from "@/components/UI/AlbumLyrics";
+import AlbumLyrics from "@/components/ui/AlbumLyrics";
 
 type Props = {
   selectedAlbum: IAlbumContent;

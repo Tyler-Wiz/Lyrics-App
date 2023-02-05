@@ -3,7 +3,7 @@ import React from "react";
 import { NextPage } from "next";
 import { ISong } from "@/libs/interfaces";
 import Layout from "@/components/layout/Layout";
-import RenderLyricsList from "@/components/UI/RenderLyricsList";
+import RenderLyricsList from "@/components/ui/RenderLyricsList";
 import { getSongs } from "@/api/data";
 
 interface Props {

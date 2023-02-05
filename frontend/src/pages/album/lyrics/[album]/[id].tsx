@@ -7,7 +7,7 @@ import banner600 from "@/assets/img/banner.jpeg";
 import Image from "next/image";
 import { getAlbums, getSongs } from "@/api/data";
 import { shuffle } from "@/helpers/shuffleArray";
-import RelatedPost from "@/components/UI/RelatedPost";
+import RelatedPost from "@/components/ui/RelatedPost";
 
 type Props = {
   lyrics: any;

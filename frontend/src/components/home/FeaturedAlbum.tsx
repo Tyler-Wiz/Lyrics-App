@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { FC } from "react";
 import { IAlbum } from "@/libs/interfaces";
-import RenderAlbumList from "../UI/RenderAlbumList";
+import RenderAlbumList from "../ui/RenderAlbumList";
 
 interface Props {
   data: [IAlbum];

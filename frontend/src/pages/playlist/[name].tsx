@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
 import Layout from "@/components/layout/Layout";
-import RenderLyricsList from "@/components/UI/RenderLyricsList";
+import RenderLyricsList from "@/components/ui/RenderLyricsList";
 import { ISong } from "@/libs/interfaces";
 import { getSongs } from "@/api/data";
 

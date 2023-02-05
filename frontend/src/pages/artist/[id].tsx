@@ -3,8 +3,8 @@ import { NextPage } from "next";
 import Layout from "@/components/layout/Layout";
 import React from "react";
 import { ISong, IArtists, IAlbum } from "@/libs/interfaces";
-import ArtistLyrics from "@/components/UI/ArtistLyrics";
-import RenderAlbumList from "@/components/UI/RenderAlbumList";
+import ArtistLyrics from "@/components/ui/ArtistLyrics";
+import RenderAlbumList from "@/components/ui/RenderAlbumList";
 import { getAlbums, getArtists, getSongs } from "@/api/data";
 
 type Props = {

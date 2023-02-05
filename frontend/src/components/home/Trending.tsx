@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { ISong } from "@/libs/interfaces";
-import RenderLyricsList from "../UI/RenderLyricsList";
+import RenderLyricsList from "../ui/RenderLyricsList";
 
 interface Props {
   data: [ISong];
