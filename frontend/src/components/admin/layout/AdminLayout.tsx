@@ -21,11 +21,11 @@ const AdminLayout: FC<Props> = ({ title, children }) => {
         <header className="md:w-[4%] md:fixed md:block hidden h-screen">
           <Nav />
         </header>
-        <div className="md:w-[96%] md:left-[4%] w-full relative dark:bg-black dark:text-primary">
-          <section className="flex justify-center items-center">
+        <div className="md:w-[96%] md:left-[4%]  w-full relative dark:bg-black dark:text-primary">
+          <section className="flex justify-center items-center fixed md:w-[96%] md:left-[4%] w-full">
             <TopNav />
           </section>
-          <main className="z-50">{children}</main>
+          <main className="z-50 mt-10 p-5 bg-dashBackground">{children}</main>
           <footer></footer>
         </div>
       </div>

@@ -4,6 +4,7 @@ export interface ISong {
   artwork: string;
   category: string;
   id: string;
+  _id: string;
   lyrics: string;
   playlist: string;
   tag: string;

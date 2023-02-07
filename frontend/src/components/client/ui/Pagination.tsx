@@ -38,7 +38,9 @@ const Pagination: FC<Props> = ({
       </span>
       {pages.map((page) => (
         <span
-          className=" bg-gray-50  mr-2 py-2 px-4 shadow-lg border-2 cursor-pointer rounded-md"
+          className={`bg-gray-50  mr-2 py-2 px-4 shadow-lg border-2 cursor-pointer rounded-md ${
+            currentPage === page ? "bg-black text-white" : ""
+          } `}
           key={page}
           onClick={() => setcurrentPage(page)}>
           {page}

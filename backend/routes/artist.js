@@ -15,4 +15,13 @@ router.post("/", async (req, res) => {
   res.send(artist);
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const artists = await Artist.find();
+    res.status(200).send(artists);
+  } catch (error) {
+    res.status(500).send(error.reponse.data);
+  }
+});
+
 module.exports = router;

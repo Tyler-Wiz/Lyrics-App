@@ -16,3 +16,13 @@
   margin: 1.8rem 0 0 0;
   font-weight: 600;
 }
+
+.edit_input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  outline: none;
+}
+
+.lyrics h2 {
+  display: block;
+}

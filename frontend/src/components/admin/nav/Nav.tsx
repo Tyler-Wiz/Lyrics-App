@@ -4,7 +4,7 @@ import { RxPerson } from "react-icons/rx";
 import {
   RiMusic2Line,
   RiAlbumLine,
-  RiHeartLine,
+  RiSearchLine,
   RiDashboardFill,
   RiUploadCloud2Line,
 } from "react-icons/ri";
@@ -12,17 +12,17 @@ import { MdQueueMusic } from "react-icons/md";
 import Link from "next/link";
 
 const NavData = [
-  { icon: <RiDashboardFill />, path: "/" },
-  { icon: <RiMusic2Line />, path: "/lyrics" },
+  { icon: <RiDashboardFill />, path: "/dashboard" },
   { icon: <RxPerson />, path: "/artist" },
   { icon: <RiAlbumLine />, path: "/album/" },
   { icon: <MdQueueMusic />, path: "/playlist" },
   { icon: <RiUploadCloud2Line />, path: "/favorite" },
+  { icon: <RiSearchLine />, path: "/favorite" },
 ];
 
 const Nav = () => {
   return (
-    <nav className="h-screen shadow-xl md:flex flex-col py-12 bg-black dark:bg-lightGrey dark:text-primary justify-between font-Crimson px-4">
+    <nav className="h-screen shadow-xl md:flex flex-col py-28 bg-black dark:bg-lightGrey dark:text-primary justify-between font-Crimson px-4">
       <div>
         <ul className="flex flex-col gap-8">
           {NavData.map((item, index) => (

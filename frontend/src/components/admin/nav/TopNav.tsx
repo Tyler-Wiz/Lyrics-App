@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 type Props = {};
 
 const TopNav = (props: Props) => {
-  const { name, token } = useSelector((state: RootState) => state.auth);
+  const { name } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
 
   let router = useRouter();
@@ -18,19 +18,17 @@ const TopNav = (props: Props) => {
     dispatch(getUser());
   }, [router, dispatch]);
 
-  console.log(token);
-
   const flexBetween = "flex justify-between items-center";
 
   return (
     <div
-      className={`${flexBetween} gap-3 w-full bg-black text-white font-Poppins py-3 text-xs`}>
+      className={`${flexBetween} gap-3 w-full bg-black text-white font-Poppins py-4 text-xs`}>
       <div className={`${flexBetween} gap-3 px-10`}>
-        <FaHome size={15} />
+        <FaHome size={18} />
         <Link href="/">Visit Website</Link>
       </div>
       <div className="relative px-10 group">
-        <div className={`${flexBetween} gap-3 cursor-pointer`}>
+        <div className={`${flexBetween} gap-4 cursor-pointer`}>
           <p>Howdy, {name}</p>
           <FaUserAlt size={15} />
         </div>

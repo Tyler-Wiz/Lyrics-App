@@ -1,6 +1,6 @@
 import { getAlbums } from "@/api/data";
-import Layout from "@/components/layout/Layout";
-import RenderAlbumList from "@/components/ui/RenderAlbumList";
+import Layout from "@/components/client/layout/Layout";
+import RenderAlbumList from "@/components/client/ui/RenderAlbumList";
 import { IAlbum } from "@/libs/interfaces";
 import { NextPage } from "next";
 import React from "react";

@@ -43,6 +43,13 @@ export const loginUser = createAsyncThunk(
         email: user.email,
         password: user.password,
       });
+      fetch("/api/login", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token: token.data }),
+      });
       localStorage.setItem("token", token.data);
       return token.data;
     } catch (error: any) {
@@ -57,6 +64,13 @@ const authReducer = createSlice({
   reducers: {
     logOutUser: (state) => {
       localStorage.removeItem("token");
+      fetch("/api/logout", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
+      });
       return {
         ...state,
         token: "",

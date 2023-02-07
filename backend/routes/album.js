@@ -17,4 +17,13 @@ router.post("/", async (req, res) => {
   res.send(album);
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const albums = await Album.find();
+    res.status(200).send(albums);
+  } catch (error) {
+    res.status(500).send(error.reponse.data);
+  }
+});
+
 module.exports = router;

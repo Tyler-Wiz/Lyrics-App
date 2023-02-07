@@ -30,7 +30,7 @@ const RegForm = () => {
   let router = useRouter();
   useEffect(() => {
     if (token) {
-      router.push("/admin/");
+      router.push("/dashboard");
     }
   }, [token, router]);
 
