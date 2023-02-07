@@ -1,14 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const { Song } = require("../models/songs");
-const { Artist } = require("../models/artists");
-const { Album } = require("../models/albums");
-const newArtist = require("../routes/newArtist");
-const newAlbum = require("../routes/newAlbum");
 const registerUser = require("../routes/registerUser");
 const loginUser = require("../routes/loginUser");
-const editUser = require("../routes/editUser");
+const songs = require("../routes/songs");
+const albums = require("../routes/album");
+const artists = require("../routes/artist");
 
 require("dotenv").config();
 
@@ -18,7 +15,6 @@ app.use(cors());
 
 const port = process.env.PORT || 1000;
 const uri = process.env.MONGODB_URI;
-
 app.listen(port, console.log(`Server is running on port ${port}`));
 
 app.get("/", (req, res) => {
@@ -34,38 +30,8 @@ mongoose
   .then(() => console.log("Mongo DB connect succesful"))
   .catch((error) => console.log("Mongo DB connect succesful", error));
 
-app.use("/post/artist", newArtist);
-app.use("/post/album", newAlbum);
 app.use("/register", registerUser);
 app.use("/login", loginUser);
-app.use("/update", editUser);
-
-app.get("/api/songs", (req, res) => {
-  Song.find()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-app.get("/api/artists", (req, res) => {
-  Artist.find()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-app.get("/api/albums", (req, res) => {
-  Album.find()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+app.use("/songs", songs);
+app.use("/albums", albums);
+app.use("/artists", artists);
