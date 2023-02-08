@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import { ISong } from "@/libs/interfaces";
 import Link from "next/link";
 import React, { FC, useState } from "react";
 import { AiOutlineHeart, AiOutlineMore, AiFillHeart } from "react-icons/ai";
-import Pagination from "./Pagination";
+import Pagination from "../../common/Pagination";
 import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { AddFavorite } from "@/store/reducers/favoriteSlice";
+import { ISong } from "@/common/models/interfaces";
 
 type Props = {
   data: [ISong];

@@ -2,7 +2,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import Layout from "@/components/client/layout/Layout";
+import Layout from "@/components/client/common/Layout";
 import Link from "next/link";
 import { RxTrash, RxHeartFilled } from "react-icons/rx";
 import { removeFavorite } from "@/store/reducers/favoriteSlice";

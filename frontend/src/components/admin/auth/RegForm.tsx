@@ -1,27 +1,31 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "@/validations/Login";
-import { LoginUser } from "@/libs/IUser";
-import Image from "next/image";
+import { RegistrationSchema } from "@/common/validations/Registration";
 import logo from "@/assets/img/logo.png";
+import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "@/store/reducers/authSlice";
-import { useRouter } from "next/router";
 import { RootState } from "@/store/store";
+import { registerUser } from "@/store/reducers/authSlice";
+import { useRouter } from "next/router";
+import { UserRegisterForm } from "@/common/models/IUser";
 
-const LoginForm = () => {
+const RegForm = () => {
+  // React Hook Form
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<LoginUser>({
-    resolver: yupResolver(loginSchema),
+  } = useForm<UserRegisterForm>({
+    resolver: yupResolver(RegistrationSchema),
   });
 
-  const { loginStatus, loginError, token } = useSelector(
+  // Get State from authSlice //
+  const { registerStatus, registerError, token } = useSelector(
     (state: RootState) => state.auth
   );
+
+  // Verify if User already Exist in Local Storage and Redirect to Dashboard //
 
   let router = useRouter();
   useEffect(() => {
@@ -30,9 +34,10 @@ const LoginForm = () => {
     }
   }, [token, router]);
 
+  // submit form to server via authSlice"
   const dispatch = useDispatch()<any>;
-  const onSubmit = (data: LoginUser) => {
-    dispatch(loginUser(data));
+  const onSubmit = (data: UserRegisterForm) => {
+    dispatch(registerUser(data));
   };
 
   return (
@@ -43,7 +48,25 @@ const LoginForm = () => {
         </div>
         <div className="p-8 rounded-lg border border-lightBlack">
           <div className="flex flex-col mb-4">
-            <label htmlFor="loginemail">username or Email Address</label>
+            <label htmlFor="name" className="">
+              Username
+            </label>
+            <input
+              type="text"
+              id="name"
+              className=" outline-none w-72 border rounded-lg px-2 py-2 mt-2 border-lightBlack"
+              {...register("name")}
+            />
+            {errors.name && (
+              <div className="text-red-500 text-left mt-3">
+                {errors.name.message}
+              </div>
+            )}
+          </div>
+          <div className="flex flex-col mb-4">
+            <label htmlFor="loginemail" className="">
+              username or Email Address
+            </label>
             <input
               type="email"
               id="loginemail"
@@ -51,7 +74,7 @@ const LoginForm = () => {
               {...register("email")}
             />
             {errors.email && (
-              <div className=" text-error text-left mt-3">
+              <div className="text-red-500 text-left mt-3">
                 {errors.email.message}
               </div>
             )}
@@ -65,19 +88,20 @@ const LoginForm = () => {
               autoFocus
               {...register("password")}></input>
             {errors.password && (
-              <div className="text-error text-left mt-3 text-xs">
+              <div className="text-red-500 text-left mt-3">
                 {errors.password.message}
               </div>
             )}
           </div>
           <button
             type="submit"
-            className="mt-10 border px-6 py-2 text-sm bg-accentColor uppercase text-primary">
-            Login
+            className="mt-6 border px-6 py-2 text-sm bg-accentColor uppercase text-primary">
+            Sign Up
           </button>
-          {loginStatus === "rejected" ? (
-            <div className=" text-error">
-              <p>{loginError}</p>
+          {/*display registration error */}
+          {registerStatus === "rejected" ? (
+            <div className=" text-error my-2 text-center">
+              <p>{registerError}</p>
             </div>
           ) : null}
         </div>
@@ -86,4 +110,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegForm;

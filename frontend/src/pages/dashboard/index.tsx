@@ -1,7 +1,7 @@
-import { getSongs } from "@/api/data";
-import Songs from "@/components/admin/home/Songs";
-import AdminLayout from "@/components/admin/layout/AdminLayout";
-import { ISong } from "@/libs/interfaces";
+import { getArtists, getSongs } from "@/api/data";
+import { IArtists, ISong } from "@/common/models/interfaces";
+import Songs from "@/components/admin/dashboard/Songs";
+import AdminLayout from "@/components/admin/common/AdminLayout";
 import { RootState } from "@/store/store";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
@@ -10,9 +10,10 @@ import { useSelector } from "react-redux";
 
 type Props = {
   data: [ISong];
+  artist: [IArtists];
 };
 
-const Index: NextPage<Props> = ({ data }) => {
+const Index: NextPage<Props> = ({ data, artist }) => {
   const { token } = useSelector((state: RootState) => state.auth);
 
   let router = useRouter();
@@ -33,8 +34,9 @@ export default Index;
 
 export async function getServerSideProps() {
   const data = await getSongs();
+  const newdata = data.reverse();
 
   return {
-    props: { data },
+    props: { data: newdata },
   };
 }

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { NextPage } from "next";
-import Layout from "@/components/client/layout/Layout";
+import Layout from "@/components/client/common/Layout";
 import { ISong } from "@/libs/interfaces";
 import parse from "html-react-parser";
 import Image from "next/image";

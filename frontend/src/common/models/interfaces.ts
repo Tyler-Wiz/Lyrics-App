@@ -19,6 +19,7 @@ export interface IArtists {
   name: string;
   tag: string;
   url: string;
+  _id: string;
 }
 
 export interface IAlbum {

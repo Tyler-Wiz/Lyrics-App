@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { ISong } from "@/libs/interfaces";
+import { ISong } from "@/common/models/interfaces";
 import { toast } from "react-toastify";
-import { getFromLocalStorage } from "@/helpers/useLocalStorage";
+import { getFromLocalStorage } from "@/common/hooks/useLocalStorage";
 
 type FavoriteState = {
   items: ISong[];

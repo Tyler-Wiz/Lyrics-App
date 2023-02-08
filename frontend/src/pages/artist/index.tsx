@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { NextPage } from "next";
-import Layout from "@/components/client/layout/Layout";
-import { IArtists } from "@/libs/interfaces";
+import Layout from "@/components/client/common/Layout";
 import Link from "next/link";
 import { getArtists } from "@/api/data";
+import { IArtists } from "@/common/models/interfaces";
 
 type Props = {
   artists: [IArtists];

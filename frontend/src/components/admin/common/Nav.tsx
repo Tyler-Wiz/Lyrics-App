@@ -13,11 +13,10 @@ import Link from "next/link";
 
 const NavData = [
   { icon: <RiDashboardFill />, path: "/dashboard" },
-  { icon: <RxPerson />, path: "/artist" },
+  { icon: <RxPerson />, path: "/dashboard/artist" },
   { icon: <RiAlbumLine />, path: "/album/" },
   { icon: <MdQueueMusic />, path: "/playlist" },
-  { icon: <RiUploadCloud2Line />, path: "/favorite" },
-  { icon: <RiSearchLine />, path: "/favorite" },
+  { icon: <RiUploadCloud2Line />, path: "/dashboard/upload" },
 ];
 
 const Nav = () => {

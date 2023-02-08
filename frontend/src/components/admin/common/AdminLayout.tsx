@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React, { FC } from "react";
-import Nav from "../nav/Nav";
-import TopNav from "../nav/TopNav";
+import Nav from "./Nav";
+import TopNav from "./TopNav";
 
 type Props = {
   title: string;

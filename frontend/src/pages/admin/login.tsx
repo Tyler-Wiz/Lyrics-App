@@ -1,4 +1,4 @@
-import LoginForm from "@/components/admin/form/LoginForm";
+import LoginForm from "@/components/admin/auth/LoginForm";
 import React from "react";
 
 type Props = {};

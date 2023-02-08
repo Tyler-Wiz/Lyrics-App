@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage } from "next";
-import Layout from "@/components/layout/Layout";
+import Layout from "@/components/client/common/Layout";
 import React from "react";
 import { playlistsData } from "@/data/data";
 import Link from "next/link";

@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { IAuth } from "@/libs/IAuth";
-import { User, LoginUser } from "@/libs/IUser";
+import { IAuth } from "@/common/models/IAuth";
+import { User, LoginUser } from "@/common/models/IUser";
 import axios from "axios";
 import { serverURL } from "@/api/api";
 import jwtDecode from "jwt-decode";
-import { getFromLocalStorage } from "@/helpers/useLocalStorage";
+import { getFromLocalStorage } from "@/common/hooks/useLocalStorage";
 
 const initialState: IAuth = {
   token: getFromLocalStorage("token"),
@@ -22,7 +22,7 @@ export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (user: User, { rejectWithValue }) => {
     try {
-      const token = await axios.post(`${serverURL}/register`, {
+      const token = await axios.post(`${serverURL}register`, {
         name: user.name,
         email: user.email,
         password: user.password,
@@ -39,7 +39,7 @@ export const loginUser = createAsyncThunk(
   "auth/logingUser",
   async (user: LoginUser, { rejectWithValue }) => {
     try {
-      const token = await axios.post(`${serverURL}/login`, {
+      const token = await axios.post(`${serverURL}login`, {
         email: user.email,
         password: user.password,
       });

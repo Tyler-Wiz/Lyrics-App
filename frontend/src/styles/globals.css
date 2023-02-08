@@ -21,8 +21,13 @@
   width: 100%;
   padding: 0.5rem 1rem;
   outline: none;
+  margin-bottom: 1rem;
 }
 
 .lyrics h2 {
   display: block;
+}
+
+.error {
+  @apply text-error text-xs;
 }

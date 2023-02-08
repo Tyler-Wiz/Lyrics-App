@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { FC } from "react";
-import { ISong } from "@/libs/interfaces";
 import Link from "next/link";
+import { ISong } from "@/common/models/interfaces";
 
 type Props = {
   data: [];

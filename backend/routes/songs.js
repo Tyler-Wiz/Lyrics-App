@@ -1,28 +1,50 @@
 const express = require("express");
 const { Song } = require("../models/songs");
 const joi = require("joi");
+const cloudinary = require("../helpers/cloudinary");
 
 const router = express.Router();
 
 router.post("/", async (req, res) => {
+  const {
+    album,
+    artwork,
+    artistName,
+    id,
+    category,
+    lyrics,
+    playlist,
+    trackName,
+    youtube,
+    tag,
+    duration,
+  } = req.body.data;
+
   try {
-    let song = new Song({
-      _id: req.body.data._id,
-      album: req.body.data.album,
-      artwork: req.body.data.artwork,
-      artistName: req.body.data.artistName,
-      id: req.body.data.id,
-      category: req.body.data.category,
-      lyrics: req.body.data.lyrics,
-      playlist: req.body.data.playlist,
-      trackName: req.body.data.trackName,
-      youtube: req.body.data.youtube,
-      tag: req.body.data.tag,
-    });
-    song = await song.save();
-    res.status(200).send("successful");
+    if (artwork) {
+      const uploadImg = await cloudinary.uploader.upload(artwork, {
+        upload_preset: "lyricsplug",
+      });
+      if (uploadImg) {
+        const song = new Song({
+          album,
+          artwork: uploadImg.url,
+          artistName,
+          id,
+          category,
+          lyrics,
+          playlist,
+          trackName,
+          youtube,
+          tag,
+          duration,
+        });
+        const savedSong = await song.save();
+        res.status(200).send("successful");
+      }
+    }
   } catch (error) {
-    if (error) res.status(400).send(error.reponse.data);
+    if (error) res.status(400).send(error);
   }
 });
 

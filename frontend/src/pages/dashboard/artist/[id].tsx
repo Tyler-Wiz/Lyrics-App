@@ -1,38 +1,36 @@
 /* eslint-disable @next/next/no-img-element */
 import { serverURL } from "@/api/api";
-import { getSongs } from "@/api/data";
+import { getArtists } from "@/api/data";
+import { IArtists } from "@/common/models/interfaces";
 import AdminLayout from "@/components/admin/common/AdminLayout";
-import { ISong } from "@/libs/interfaces";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { FC, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 type Props = {
-  lyrics: ISong;
+  artist: IArtists;
 };
 
-const EditSong: FC<Props> = ({ lyrics }) => {
-  const [tempLyrics, setTempLyrics] = useState(lyrics);
+const EditSong: FC<Props> = ({ artist }) => {
+  const [tempArtist, setTempArtist] = useState(artist);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
-
-  console.log(lyrics);
 
   let router = useRouter();
   useEffect(() => {
     if (success === "successful") {
-      router.push("/dashboard");
+      router.push("/dashboard/artist");
     }
   }, [router, success]);
 
   const onSubmit = async () => {
     try {
-      const updated = await axios.put(`${serverURL}/songs`, {
-        data: tempLyrics,
+      const updated = await axios.put(`${serverURL}artists`, {
+        data: tempArtist,
       });
       if (updated.data === "successful") {
-        toast.success("Lyrics Updated On Database", {
+        toast.success("Artist Updated On Database", {
           position: "bottom-left",
         });
       }
@@ -67,46 +65,26 @@ const EditSong: FC<Props> = ({ lyrics }) => {
           </div>
           <input
             type="text"
-            value={tempLyrics.trackName}
+            value={tempArtist.name}
             className="edit_input mb-3"
             onChange={(e) => {
-              setTempLyrics({
-                ...tempLyrics,
-                trackName: e.target.value,
+              setTempArtist({
+                ...tempArtist,
+                name: e.target.value,
               });
             }}
           />
           <input
             type="text"
-            value={tempLyrics.artistName}
-            className="edit_input mb-3"
-            onChange={(e) => {
-              setTempLyrics({
-                ...tempLyrics,
-                artistName: e.target.value,
-              });
-            }}
-          />
-          <input
-            type="text"
-            value={tempLyrics.id}
+            value={tempArtist.id}
             className="edit_input mb-2"
             onChange={(e) => {
-              setTempLyrics({
-                ...tempLyrics,
+              setTempArtist({
+                ...tempArtist,
                 id: e.target.value,
               });
             }}
           />
-          <textarea
-            value={tempLyrics.lyrics}
-            onChange={(e) => {
-              setTempLyrics({
-                ...tempLyrics,
-                lyrics: e.target.value,
-              });
-            }}
-            className="w-full h-[450px] my-3 outline-none text-md lyrics rounded-lg"></textarea>
         </div>
         <div className="w-2/5 mt-14">
           <div className="flex gap-10">
@@ -114,56 +92,12 @@ const EditSong: FC<Props> = ({ lyrics }) => {
               <p className="mb-2 text-xs">Tag</p>
               <input
                 type="text"
-                value={tempLyrics.tag}
+                value={tempArtist.tag}
                 className="edit_input mb-4"
                 onChange={(e) => {
-                  setTempLyrics({
-                    ...tempLyrics,
+                  setTempArtist({
+                    ...tempArtist,
                     tag: e.target.value,
-                  });
-                }}
-              />
-            </div>
-            <div>
-              <p className="mb-2 text-xs">Category</p>
-              <input
-                type="text"
-                value={tempLyrics.category}
-                className="edit_input mb-4"
-                onChange={(e) => {
-                  setTempLyrics({
-                    ...tempLyrics,
-                    category: e.target.value,
-                  });
-                }}
-              />
-            </div>
-          </div>
-          <div className="flex gap-10">
-            <div>
-              <p className="text-xs mb-1">Playlist</p>
-              <input
-                type="text"
-                value={tempLyrics.playlist}
-                className="edit_input mb-2"
-                onChange={(e) => {
-                  setTempLyrics({
-                    ...tempLyrics,
-                    playlist: e.target.value,
-                  });
-                }}
-              />
-            </div>
-            <div>
-              <p className="mb-1 text-xs">youtube</p>
-              <input
-                type="text"
-                value={tempLyrics.youtube}
-                className="edit_input mb-4"
-                onChange={(e) => {
-                  setTempLyrics({
-                    ...tempLyrics,
-                    youtube: e.target.value,
                   });
                 }}
               />
@@ -174,7 +108,7 @@ const EditSong: FC<Props> = ({ lyrics }) => {
           <div className="w-[75%] h-2/4 bg-white flex items-center justify-center overflow-hidden">
             <div className="relative w-80 h-auto">
               <img
-                src={tempLyrics.artwork}
+                src={tempArtist.url}
                 alt="edit artwork"
                 className=" object-cover"
               />
@@ -197,12 +131,12 @@ export default EditSong;
 export const getServerSideProps = async (context: any) => {
   const { params } = context;
   const { id } = params;
-  const data = await getSongs();
-  const lyrics = data?.find((item: any) => item._id === id);
+  const data = await getArtists();
+  const artist = data?.find((item: any) => item._id === id);
 
   return {
     props: {
-      lyrics,
+      artist,
     },
   };
 };

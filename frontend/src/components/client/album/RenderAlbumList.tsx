@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { IAlbum } from "@/libs/interfaces";
 import { FC } from "react";
 import Link from "next/link";
+import { IAlbum } from "@/common/models/interfaces";
 
 type Props = {
   data: [IAlbum];

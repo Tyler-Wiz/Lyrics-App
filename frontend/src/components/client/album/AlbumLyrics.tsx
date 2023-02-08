@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { ISong } from "@/libs/interfaces";
+import { ISong } from "@/common/models/interfaces";
 import Link from "next/link";
 import React, { FC } from "react";
 import { AiOutlineHeart, AiOutlineMore } from "react-icons/ai";

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import Pagination from "@/components/client/ui/Pagination";
-import { ISong } from "@/libs/interfaces";
+import { ISong } from "@/common/models/interfaces";
+import Pagination from "@/components/common/Pagination";
 import Link from "next/link";
 import React, { FC, useState } from "react";
 import { BiEditAlt } from "react-icons/bi";

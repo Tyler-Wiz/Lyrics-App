@@ -1,4 +1,4 @@
-import RegForm from "@/components/admin/form/RegForm";
+import RegForm from "@/components/admin/auth/RegForm";
 import React from "react";
 
 type Props = {};

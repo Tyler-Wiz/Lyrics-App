@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Layout from "@/components/client/layout/Layout";
+import Layout from "@/components/client/common/Layout";
 import NewSingle from "@/components/client/home/NewSingle";
 import Trending from "@/components/client/home/Trending";
 import FeaturedArtist from "@/components/client/home/FeaturedArtist";
