@@ -71,7 +71,9 @@ router.put("/", async (req, res) => {
     tag: joi.string().allow(""),
     playlist: joi.string().allow(""),
     updatedAt: joi.string().allow(""),
+    createdAt: joi.string().allow(""),
     duration: joi.string().allow(""),
+    __v: joi.number(),
   });
 
   const { error } = schema.validate(req.body.data);

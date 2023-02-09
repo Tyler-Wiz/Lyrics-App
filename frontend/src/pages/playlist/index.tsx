@@ -2,13 +2,15 @@
 import { NextPage } from "next";
 import Layout from "@/components/client/common/Layout";
 import React from "react";
-import { playlistsData } from "@/data/data";
 import Link from "next/link";
-import Image from "next/image";
+import { getPlaylist } from "@/api/data";
+import { IPlaylist } from "@/common/models/interfaces";
 
-type Props = {};
+type Props = {
+  data: [IPlaylist];
+};
 
-const Index: NextPage = (props: Props) => {
+const Index: NextPage<Props> = ({ data }) => {
   return (
     <Layout title="Playlist" content="All Playlist">
       <>
@@ -16,11 +18,11 @@ const Index: NextPage = (props: Props) => {
           All Playlist
         </h2>
         <div className="text-center mt-6 mb-20 px-5 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {playlistsData.map((item, index) => (
+          {data.map((item, index) => (
             <div key={index}>
               <Link href={`${"/playlist/" + item.name}`}>
-                <Image
-                  src={item.icon}
+                <img
+                  src={item.artwork}
                   alt="playlist image"
                   className="rounded-lg shadow-lg hover:scale-95 cursor-pointer"
                 />
@@ -35,3 +37,13 @@ const Index: NextPage = (props: Props) => {
 };
 
 export default Index;
+
+export async function getServerSideProps() {
+  const data = await getPlaylist();
+
+  return {
+    props: {
+      data,
+    },
+  };
+}

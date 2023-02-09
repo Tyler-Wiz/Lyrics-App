@@ -2,17 +2,17 @@
 import React from "react";
 import { NextPage } from "next";
 import Layout from "@/components/client/common/Layout";
-import { ISong } from "@/libs/interfaces";
 import parse from "html-react-parser";
 import Image from "next/image";
-import RelatedPost from "@/components/client/ui/RelatedPost";
-import { shuffle } from "@/helpers/shuffleArray";
 import banner600 from "@/assets/img/banner.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { AddFavorite } from "@/store/reducers/favoriteSlice";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { getSongs } from "@/api/data";
 import { RootState } from "@/store/store";
+import { ISong } from "@/common/models/interfaces";
+import { shuffle } from "@/common/hooks/shuffleArray";
+import RelatedPost from "@/components/common/RelatedPost";
 
 type Props = {
   lyrics: ISong;

@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { serverURL } from "@/api/api";
 import { getSongs } from "@/api/data";
+import { ISong } from "@/common/models/interfaces";
 import AdminLayout from "@/components/admin/common/AdminLayout";
-import { ISong } from "@/libs/interfaces";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { FC, useEffect, useState } from "react";
@@ -28,7 +28,7 @@ const EditSong: FC<Props> = ({ lyrics }) => {
 
   const onSubmit = async () => {
     try {
-      const updated = await axios.put(`${serverURL}/songs`, {
+      const updated = await axios.put(`${serverURL}songs`, {
         data: tempLyrics,
       });
       if (updated.data === "successful") {

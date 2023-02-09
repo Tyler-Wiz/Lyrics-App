@@ -5,14 +5,15 @@ import Trending from "@/components/client/home/Trending";
 import FeaturedArtist from "@/components/client/home/FeaturedArtist";
 import FeaturedAlbum from "@/components/client/home/FeaturedAlbum";
 import Playlist from "@/components/client/home/Playlist";
-import { ISong, IArtists, IAlbum } from "@/libs/interfaces";
-import { getAlbums, getArtists, getSongs } from "@/api/data";
+import { getAlbums, getArtists, getPlaylist, getSongs } from "@/api/data";
+import { IAlbum, IArtists, IPlaylist, ISong } from "@/common/models/interfaces";
 
 interface Iprops {
   trending: [ISong];
   newLyrics: [ISong];
   featuredArtist: [IArtists];
   featuredAlbums: [IAlbum];
+  playlistData: [IPlaylist];
 }
 
 const Home: NextPage<Iprops> = ({
@@ -20,6 +21,7 @@ const Home: NextPage<Iprops> = ({
   trending,
   featuredArtist,
   featuredAlbums,
+  playlistData,
 }) => {
   return (
     <>
@@ -30,7 +32,7 @@ const Home: NextPage<Iprops> = ({
         <Trending data={trending} />
         <NewSingle data={newLyrics} />
         <FeaturedAlbum data={featuredAlbums} />
-        <Playlist />
+        <Playlist data={playlistData} />
       </Layout>
     </>
   );
@@ -42,6 +44,7 @@ export async function getServerSideProps() {
   const data = await getSongs();
   const artists = await getArtists();
   const albums = await getAlbums();
+  const playlistData = await getPlaylist();
 
   const newLyrics = data.filter((item: any) => {
     if (item.category?.includes("new")) {
@@ -71,6 +74,7 @@ export async function getServerSideProps() {
       trending,
       featuredArtist,
       featuredAlbums,
+      playlistData,
     },
   };
 }

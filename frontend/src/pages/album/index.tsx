@@ -1,9 +1,9 @@
 import { getAlbums } from "@/api/data";
 import Layout from "@/components/client/common/Layout";
 import RenderAlbumList from "@/components/client/album/RenderAlbumList";
-import { IAlbum } from "@/libs/interfaces";
 import { NextPage } from "next";
 import React from "react";
+import { IAlbum } from "@/common/models/interfaces";
 
 interface Props {
   albums: [IAlbum];

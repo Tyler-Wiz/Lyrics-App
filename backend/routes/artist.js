@@ -44,6 +44,8 @@ router.put("/", async (req, res) => {
     url: joi.string().required(),
     tag: joi.string().allow(""),
     updatedAt: joi.string().allow(""),
+    createdAt: joi.string().allow(""),
+    __v: joi.number(),
   });
 
   const { error } = schema.validate(req.body.data);

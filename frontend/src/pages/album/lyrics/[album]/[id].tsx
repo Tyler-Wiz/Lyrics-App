@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import Layout from "@/components/layout/Layout";
 import { NextPage } from "next";
 import React from "react";
 import parse from "html-react-parser";
 import banner600 from "@/assets/img/banner.jpeg";
 import Image from "next/image";
 import { getAlbums, getSongs } from "@/api/data";
-import { shuffle } from "@/helpers/shuffleArray";
-import RelatedPost from "@/components/ui/RelatedPost";
+import Layout from "@/components/client/common/Layout";
+import RelatedPost from "@/components/common/RelatedPost";
+import { shuffle } from "@/common/hooks/shuffleArray";
 
 type Props = {
   lyrics: any;

@@ -22,6 +22,12 @@ export interface IArtists {
   _id: string;
 }
 
+export interface IPlaylist {
+  artwork: string;
+  name: string;
+  _id: string;
+}
+
 export interface IAlbum {
   albumName: string;
   artistName: string;

@@ -6,6 +6,7 @@ const loginUser = require("../routes/loginUser");
 const songs = require("../routes/songs");
 const albums = require("../routes/album");
 const artists = require("../routes/artist");
+const playlists = require("../routes/playlist");
 
 require("dotenv").config();
 
@@ -35,3 +36,4 @@ app.use("/login", loginUser);
 app.use("/songs", songs);
 app.use("/albums", albums);
 app.use("/artists", artists);
+app.use("/playlists", playlists);

@@ -3,6 +3,7 @@ import ArtistUploadForm from "@/components/admin/artist/ArtistUploadForm";
 import UploadForm from "@/components/admin/dashboard/UploadForm";
 import AdminLayout from "@/components/admin/common/AdminLayout";
 import React, { useState } from "react";
+import PlaylistUploadForm from "@/components/admin/playlist/PlaylistUploadForm";
 
 type Props = {};
 
@@ -20,6 +21,7 @@ const Upload = (props: Props) => {
       <div className={`${isArtistForm ? "block" : "hidden"}`}>
         <ArtistUploadForm />
       </div>
+      <PlaylistUploadForm />
     </AdminLayout>
   );
 };

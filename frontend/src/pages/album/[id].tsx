@@ -1,10 +1,9 @@
-import { getLyricsFromAlbum } from "@/helpers/getFirebaseData";
 import { NextPage } from "next";
 import React from "react";
-import { IAlbumContent } from "@/libs/interfaces";
 import Layout from "@/components/client/common/Layout";
 import { getAlbums } from "@/api/data";
 import AlbumLyrics from "@/components/client/album/AlbumLyrics";
+import { IAlbumContent } from "@/common/models/interfaces";
 
 type Props = {
   selectedAlbum: IAlbumContent;

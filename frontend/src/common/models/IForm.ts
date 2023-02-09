@@ -43,3 +43,9 @@ export interface IArtistForm {
 export interface IArtistTag {
   trending: "trending";
 }
+
+export interface IPlaylistForm {
+  artwork: string;
+  name: string;
+  _id: string;
+}

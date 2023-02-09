@@ -49,11 +49,13 @@ const Songs: FC<Props> = ({ data }) => {
       <div className="flex mb-10 gap-6 items-center justify-between">
         <div className="flex gap-6 items-center">
           <p className="text-2xl">Songs</p>
-          <button
-            type="submit"
-            className=" bg-accentColor text-white px-2 py-1 text-xs">
-            Add New
-          </button>
+          <Link href="/dashboard/upload">
+            <button
+              type="submit"
+              className=" bg-accentColor text-white px-2 py-1 text-xs">
+              Add New
+            </button>
+          </Link>
         </div>
         <input
           className="w-2/5 outline-none py-2 rounded-lg font-Crimson text-black bg-lightGrey dark:text-primary px-2 text-xs"

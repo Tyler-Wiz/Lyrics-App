@@ -18,3 +18,9 @@ export const getAlbums = async () => {
   const data = resSongs.data;
   return data;
 };
+
+export const getPlaylist = async () => {
+  const resSongs = await axios.get(`${serverURL}playlists`);
+  const data = resSongs.data;
+  return data;
+};
