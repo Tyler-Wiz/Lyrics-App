@@ -56,7 +56,7 @@ const PlaylistUploadForm: FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex gap-6 mt-20">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex gap-6 my-52">
       <div className="w-2/3">
         <input
           id="name"
@@ -78,11 +78,11 @@ const PlaylistUploadForm: FC = () => {
         <button
           type="submit"
           className="bg-violet-600 w-[100%] text-white bg-accentColor py-3 my-4 font-display uppercase font-semibold">
-          Send Product
+          Publish Playlist
         </button>
       </div>
       <div className="w-1/3">
-        <div className="w-[350px] h-[330px] bg-gray-200 rounded-lg flex item items-center justify-center overflow-hidden">
+        <div className="w-auto h-[330px] bg-white rounded-lg flex item items-center justify-center overflow-hidden">
           {!image ? (
             <p>Image preview</p>
           ) : (

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import React from "react";
 import { RxPerson } from "react-icons/rx";
@@ -25,6 +26,11 @@ const Nav = () => {
   return (
     <nav className="h-screen shadow-xl md:flex flex-col py-12 bg-navbackground dark:bg-lightGrey dark:text-primary justify-between font-Crimson px-6">
       <div>
+        <Link href="/">
+          <div className="w-24 h-auto mx-auto">
+            <img src="/logo.png" alt="main Logo" />
+          </div>
+        </Link>
         <p className="text-sm my-8 text-lightBlack">Music</p>
         <ul className="flex flex-col gap-6">
           {NavData.map((item, index) => (

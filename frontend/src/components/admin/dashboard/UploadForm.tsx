@@ -59,7 +59,10 @@ const UploadForm: FC = () => {
 
   return (
     <div className="">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex gap-6 mt-5">
+      <div>
+        <p className="text-xl my-2">Upload New Lyrics</p>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex gap-6 mt-12">
         <div className="w-2/3">
           <input
             id="trackName"
@@ -183,7 +186,7 @@ const UploadForm: FC = () => {
               )}
             </div>
           </div>
-          <div className="w-[350px] h-[330px] bg-gray-200 rounded-lg flex item items-center justify-center overflow-hidden">
+          <div className="w-auto h-[330px] bg-white rounded-lg flex item items-center justify-center overflow-hidden">
             {!image ? (
               <p>Image preview</p>
             ) : (

@@ -1,4 +1,4 @@
-import { getArtists, getSongs } from "@/api/data";
+import { getArtists } from "@/api/data";
 import { IArtists } from "@/common/models/interfaces";
 import Artist from "@/components/admin/artist/Artist";
 import AdminLayout from "@/components/admin/common/AdminLayout";

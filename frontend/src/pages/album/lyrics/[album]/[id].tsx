@@ -12,9 +12,10 @@ import { shuffle } from "@/common/hooks/shuffleArray";
 type Props = {
   lyrics: any;
   related: [];
+  artwork: string;
 };
 
-const AlbumLyrics: NextPage<Props> = ({ lyrics, related }) => {
+const AlbumLyrics: NextPage<Props> = ({ lyrics, related, artwork }) => {
   const preDescription = lyrics.lyrics.replace(/(<([^>]+)>)/gi, "");
   const metaDescription = preDescription.substring(0, 120);
 
@@ -26,11 +27,7 @@ const AlbumLyrics: NextPage<Props> = ({ lyrics, related }) => {
       }>
       <div className="px-10 py-8 flex gap-4 shadow-sm font-Crimson">
         <div className="w-72 h-72">
-          <img
-            src={lyrics.artwork}
-            alt="lyrics artwork"
-            className="rounded-xl"
-          />
+          <img src={artwork} alt="lyrics artwork" className="rounded-xl" />
         </div>
         <div className="py-10">
           <div className="text-xl mb-2 font-semibold text-lightBlack">
@@ -69,6 +66,8 @@ export const getServerSideProps = async (context: any) => {
   const selectedAlbum = data?.find((x: any) => x.id === album);
   const lyrics = selectedAlbum.songs?.find((item: any) => item.id === id);
 
+  const artwork = selectedAlbum?.artwork;
+
   const allSongs = await getSongs();
 
   const relatedData = allSongs.filter((item: any) => {
@@ -83,6 +82,7 @@ export const getServerSideProps = async (context: any) => {
     props: {
       lyrics,
       related,
+      artwork,
     },
   };
 };

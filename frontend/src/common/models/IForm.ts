@@ -49,3 +49,11 @@ export interface IPlaylistForm {
   name: string;
   _id: string;
 }
+
+export interface IAlbumForm {
+  artistName: string;
+  id: string;
+  lyrics: string;
+  trackName: string;
+  duration: string;
+}

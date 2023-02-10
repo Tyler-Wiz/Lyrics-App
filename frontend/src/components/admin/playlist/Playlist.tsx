@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import { IArtists } from "@/common/models/interfaces";
+import { IPlaylist } from "@/common/models/interfaces";
 import Pagination from "@/components/common/Pagination";
 import Link from "next/link";
 import React, { FC, useState } from "react";
 import { BiEditAlt } from "react-icons/bi";
 
 type Props = {
-  data: [IArtists];
+  data: [IPlaylist];
 };
 
-const Artist: FC<Props> = ({ data }) => {
+const Playlist: FC<Props> = ({ data }) => {
   const [filteredData, setFilteredData] = useState(data);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -21,11 +21,8 @@ const Artist: FC<Props> = ({ data }) => {
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter: any = data.filter((value: IArtists) => {
-      return (
-        value.name.toLowerCase().includes(searchWord.toLowerCase()) ||
-        value.tag.toLowerCase().includes(searchWord.toLowerCase())
-      );
+    const newFilter: any = data.filter((value: any) => {
+      return value.name.toLowerCase().includes(searchWord.toLowerCase());
     });
 
     if (searchWord === "") {
@@ -44,8 +41,8 @@ const Artist: FC<Props> = ({ data }) => {
     <div className="w-full mt-5 shadow-3xl font-Poppins text-sm">
       <div className="flex mb-10 gap-6 items-center justify-between">
         <div className="flex gap-6 items-center">
-          <p className="text-2xl">Artist</p>
-          <Link href="/dashboard/artist/upload">
+          <p className="text-2xl">Playlist</p>
+          <Link href="/dashboard/playlist/upload">
             <button
               type="submit"
               className=" bg-accentColor text-white px-2 py-1 text-xs">
@@ -60,20 +57,14 @@ const Artist: FC<Props> = ({ data }) => {
           onChange={handleFilter}
         />
       </div>
-      <table className="w-full text-sm text-left font-medium bg-white">
+      <table className="w-full text-sm text-left font-medium bg-white rounded-md shadow-lg">
         <thead className="text-sm capitalize border-b-[.4px] ">
           <tr>
             <th scope="col" className="px-6 py-4">
               Artist Image
             </th>
             <th scope="col" className="px-6 py-3">
-              Artist Name
-            </th>
-            <th scope="col" className="px-6 py-3">
-              tag
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Edit Artist
+              Edit
             </th>
           </tr>
         </thead>
@@ -86,13 +77,9 @@ const Artist: FC<Props> = ({ data }) => {
                   className="bg-white border-b-[.4px]  last:border-0 hover:bg-dashHover  cursor-pointer">
                   <th
                     scope="row"
-                    className="px-6 py-2 font-medium text-gray-900 whitespace-nowrap flex items-center">
-                    <div className="h-11 w-10 mr-4">
-                      <img src={item.url} className="mr-4" alt={item.name} />
-                    </div>
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap flex items-center">
+                    {item.name}
                   </th>
-                  <td className="px-6 py-2 font-medium">{item.name}</td>
-                  <td className="px-6 py-2 font-medium">{item.tag}</td>
                   <td className="px-6 py-2 text-right">
                     <Link href={`${"/dashboard/artist/" + item._id}`}>
                       <BiEditAlt size={23} className=" text-error" />
@@ -113,4 +100,4 @@ const Artist: FC<Props> = ({ data }) => {
   );
 };
 
-export default Artist;
+export default Playlist;

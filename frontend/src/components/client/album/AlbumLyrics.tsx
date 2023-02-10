@@ -33,7 +33,7 @@ const AlbumLyrics: FC<Props> = ({ data, id, albumName, albumArtwork }) => {
                 <p className="w-[2%] text-sm text-lightBlack">{number}</p>
                 <div className="flex w-[5%]">
                   <div className="w-12 h-12">
-                    <img src={item.artwork} alt="artist Image" />
+                    <img src={albumArtwork} alt="artist Image" />
                   </div>
                 </div>
                 <div className="w-[40%]">

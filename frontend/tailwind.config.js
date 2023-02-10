@@ -38,7 +38,7 @@ module.exports = {
       lightGrey: "#969BA033",
       accentColor: "#2C67A8",
       error: "#A30000",
-      dashBackground: "#f8f3f7",
+      dashBackground: "#E9EAEC",
       dashHover: "#f8f3f7ff",
     },
   },
