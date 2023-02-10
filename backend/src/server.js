@@ -12,7 +12,14 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json({ limit: "50mb" }));
-app.use(cors());
+
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 const port = process.env.PORT || 1000;
 const uri = process.env.MONGODB_URI;
