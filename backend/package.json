@@ -7,7 +7,6 @@
     "node": "18.x"
   },
   "scripts": {
-    "build": "rimraf ./build && tsc",
     "server": "nodemon server.js",
     "start": "node build/server.js"
   },
