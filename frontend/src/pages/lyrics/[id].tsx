@@ -33,41 +33,43 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
       content={
         lyrics.artistName + " " + lyrics.trackName + " - " + metaDescription
       }>
-      <div className="px-10 py-8 flex flex-col items-center md:flex-row gap-4 shadow-sm font-Crimson">
-        <div className="w-72 h-72">
+      <div className="px-10 py-8 flex gap-4 shadow-sm font-Crimson">
+        <div className="w-64 md:w-72 md:h-72">
           <img
             src={lyrics.artwork}
             alt="lyrics artwork"
             className="rounded-xl"
           />
         </div>
-        <div className="py-10 text-center md:text-justify">
-          <div className="text-xl mb-2 font-semibold text-lightBlack">
+        <div className="py-10">
+          <div className="text-md md:text-lg mb-2 font-semibold text-lightBlack">
             Lyrics
           </div>
-          <p className="text-2xl mb-2 font-semibold text-black dark:text-primary">
+          <p className="text-md md:text-lg mb-2 font-semibold text-black dark:text-primary">
             {lyrics.trackName}
           </p>
-          <p className="text-lg mb-2 font-semibold text-lightBlack ">
+          <p className="text-md md:text-lg mb-2 font-semibold text-lightBlack ">
             {lyrics.artistName}
           </p>
-          {ItemIndex ? (
-            <AiFillHeart size={25} className="my-3 text-accentColor" />
-          ) : (
-            <AiOutlineHeart
-              size={25}
-              onClick={() => dispatch(AddFavorite(lyrics))}
-              className="cursor-pointer my-3 text-accentColor"
-            />
-          )}
+          <div className="w-full mx-auto">
+            {ItemIndex ? (
+              <AiFillHeart size={25} className="my-3 text-accentColor" />
+            ) : (
+              <AiOutlineHeart
+                size={25}
+                onClick={() => dispatch(AddFavorite(lyrics))}
+                className="cursor-pointer my-3 text-accentColor"
+              />
+            )}
+          </div>
         </div>
       </div>
-      <div className="grid md:grid-cols-6 md:p-10 p-5 md:text-justify ">
-        <div className="lyrics font-Crimson text-center md:text-justify  col-span-4">
+      <div className="md:grid md:grid-cols-6 gap-10 p-10 flex flex-col justify-center">
+        <div className="lyrics font-Crimson text-center md:text-justify col-span-4">
           {parse(lyrics.lyrics)}
         </div>
         <div className="col-span-2 ">
-          <div className="relative w-[300px] h-[600px]">
+          <div className="relative w-[300px] h-[600px] mx-auto">
             <Image src={banner600} fill alt="lyrics artwork" />
           </div>
           <RelatedPost data={related} />

@@ -30,23 +30,23 @@ const AlbumLyrics: NextPage<Props> = ({ lyrics, related, artwork }) => {
           <img src={artwork} alt="lyrics artwork" className="rounded-xl" />
         </div>
         <div className="py-10">
-          <div className="text-xl mb-2 font-semibold text-lightBlack">
+          <div className="md:text-xl text-sm mb-2 font-semibold text-lightBlack">
             Lyrics
           </div>
-          <p className="text-2xl mb-2 font-semibold text-black dark:text-primary">
+          <p className="md:text-2xl text-lg mb-2 font-semibold text-black dark:text-primary">
             {lyrics.trackName}
           </p>
-          <p className="text-lg mb-2 font-semibold text-lightBlack ">
+          <p className="md:text-xl text-sm mb-2 font-semibold text-lightBlack ">
             {lyrics.artistName}
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-6 p-10">
-        <div className="lyrics font-Crimson col-span-4">
+      <div className="md:grid md:grid-cols-6 gap-10 p-10 flex flex-col justify-center ">
+        <div className="lyrics font-Crimson col-span-4 text-center md:text-justify">
           {parse(lyrics.lyrics)}
         </div>
-        <div className="col-span-2 sticky">
-          <div className="relative w-[300px] h-[600px]">
+        <div className="md:col-span-2">
+          <div className="relative w-[300px] h-[600px] mx-auto">
             <Image src={banner600} fill alt="lyrics artwork" />
           </div>
           <RelatedPost data={related} />

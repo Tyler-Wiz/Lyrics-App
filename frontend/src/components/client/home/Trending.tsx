@@ -1,5 +1,5 @@
+import { ISong } from "@/common/models/interfaces";
 import React, { FC } from "react";
-import { ISong } from "@/libs/interfaces";
 import RenderLyricsList from "../lyrics/RenderLyricsList";
 
 interface Props {

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -22,7 +23,7 @@ const NavData = [
   { name: "artists", icon: <RxPerson />, path: "/artist" },
   { name: "albums", icon: <RiAlbumLine />, path: "/album/" },
   { name: "Playlist", icon: <MdQueueMusic />, path: "/playlist" },
-  { name: "Favorite", icon: <RiHeartLine />, path: "/playlist" },
+  { name: "Favorite", icon: <RiHeartLine />, path: "/favorite" },
 ];
 
 const MobileNav = (props: Props) => {
@@ -42,6 +43,11 @@ const MobileNav = (props: Props) => {
         <nav className="h-screen flex flex-col bg-navbackground dark:bg-black dark:text-primary px-10 py-5 justify-between font-Crimson">
           <div>
             <MdClose size={35} onClick={() => setModalVisible(false)} />
+            <Link href="/">
+              <div className="w-24 h-auto my-10">
+                <img src="/logo.png" alt="main Logo" />
+              </div>
+            </Link>
             <p className="text-md my-8 text-lightBlack">Music</p>
             <ul className="flex flex-col gap-2">
               {NavData.map((item, index) => (

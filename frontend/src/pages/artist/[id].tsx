@@ -21,7 +21,7 @@ const ArtistPage: NextPage<Props> = ({ artist, artistSongs, artistAlbums }) => {
           <img
             src={artist[0].url}
             alt="artist Image"
-            className="rounded-full object-cover h-full"
+            className="object-cover h-full"
           />
         </div>
         <div className="md:w-3/4">
@@ -31,12 +31,15 @@ const ArtistPage: NextPage<Props> = ({ artist, artistSongs, artistAlbums }) => {
               {artistSongs.length}
               <span className="ml-2 text-sm text-lightBlack">Songs</span>
             </p>
-            <span> - </span>
+
             {artistAlbums.length > 0 ? (
-              <p className="text-lg">
-                {artistAlbums.length}
-                <span className="ml-2 text-sm text-lightBlack">Albums</span>
-              </p>
+              <>
+                <span> - </span>
+                <p className="text-lg">
+                  {artistAlbums.length}
+                  <span className="ml-2 text-sm text-lightBlack">Albums</span>
+                </p>
+              </>
             ) : null}
           </div>
         </div>

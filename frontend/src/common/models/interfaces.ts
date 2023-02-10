@@ -12,6 +12,7 @@ export interface ISong {
   youtube: string;
   duration: string;
   itemQuantity: number;
+  updatedAt: any;
 }
 
 export interface IArtists {
@@ -20,6 +21,7 @@ export interface IArtists {
   tag: string;
   url: string;
   _id: string;
+  updatedAt: any;
 }
 
 export interface IPlaylist {

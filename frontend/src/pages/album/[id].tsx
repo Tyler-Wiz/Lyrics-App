@@ -19,7 +19,7 @@ const AlbumPage: NextPage<Props> = ({ selectedAlbum, id }) => {
     <Layout
       title={`${selectedAlbum.albumName} | ${selectedAlbum.artistName}`}
       content={`${selectedAlbum.albumName} | ${selectedAlbum.artistName}`}>
-      <div className="px-20 mt-10">
+      <div className="mx-auto px-10">
         <AlbumLyrics
           data={data}
           id={id}

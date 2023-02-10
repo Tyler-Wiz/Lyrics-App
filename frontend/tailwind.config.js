@@ -6,7 +6,6 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  plugins: [require("tailwind-scrollbar-hide")],
   extend: {
     keyframes: {
       slideIn: {

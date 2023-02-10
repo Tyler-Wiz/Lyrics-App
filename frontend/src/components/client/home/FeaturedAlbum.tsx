@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import { IAlbum } from "@/common/models/interfaces";
 import React, { FC } from "react";
-import { IAlbum } from "@/libs/interfaces";
 import RenderAlbumList from "../album/RenderAlbumList";
 
 interface Props {

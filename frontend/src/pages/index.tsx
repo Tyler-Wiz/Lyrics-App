@@ -46,12 +46,14 @@ export async function getServerSideProps() {
   const albums = await getAlbums();
   const playlistData = await getPlaylist();
 
-  const newLyrics = data.filter((item: any) => {
+  const lyricsData = data.reverse();
+
+  const newLyrics = lyricsData.filter((item: any) => {
     if (item.category?.includes("new")) {
       return item;
     }
   });
-  const trending = data.filter((item: any) => {
+  const trending = lyricsData.filter((item: any) => {
     if (item.tag?.includes("trending")) {
       return item;
     }
