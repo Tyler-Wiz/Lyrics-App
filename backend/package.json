@@ -5,7 +5,8 @@
   "main": "/src/server.js",
   "scripts": {
     "build": "rimraf ./build && tsc",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "start": "node build/server.js"
   },
   "keywords": [],
   "author": "",
