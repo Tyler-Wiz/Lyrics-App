@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ["tooxclusive.com", "res.cloudinary.com"],
   },
+  compress: true,
 };
 
 module.exports = nextConfig;
