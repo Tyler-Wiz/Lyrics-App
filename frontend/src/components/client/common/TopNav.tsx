@@ -34,7 +34,7 @@ const TopNav = () => {
   return (
     <div className="w-full md:px-16 px-5 flex justify-between items-center py-4 sticky border-b-[.3px] border-b-lightGrey">
       <MobileNav />
-      <div className="relative w-3/5 group">
+      <div className="relative w-4/5 group">
         <input
           className="w-full outline-none py-2 rounded-lg font-Crimson text-black bg-lightGrey dark:text-primary px-2 text-xs"
           placeholder="Search"

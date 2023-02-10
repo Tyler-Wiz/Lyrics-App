@@ -13,7 +13,7 @@ const FeaturedArtist: FC<Props> = ({ data }) => {
       <h2 className="px-5 md:px-10 mt-10 text-xl text-black font-semibold">
         Top Artists
       </h2>
-      <div className="w-full mx-auto grid  md:grid grid-cols-5 overflow-x-auto md:grid-cols-5 lg:grid-cols-10 gap-6 px-5 md:px-10 mt-6 mb-20 font-Crimson scrollbar-hide">
+      <div className="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-10 gap-6 px-5 md:px-10 mt-6 mb-20 font-Poppins">
         {data.map((item) => (
           <div key={item.id} className="">
             <Link href={`${"/artist/" + item.id}`}>
@@ -24,8 +24,7 @@ const FeaturedArtist: FC<Props> = ({ data }) => {
                   className="rounded-full shadow-lg hover:scale-105 cursor-pointer object-cover"
                 />
               </div>
-
-              <p className="text-xs my-2 text-center font-medium text-black capitalize dark:text-primary">
+              <p className="text-[10px] mx-auto my-2 text-center text-black capitalize dark:text-primary">
                 {item.name}
               </p>
             </Link>
