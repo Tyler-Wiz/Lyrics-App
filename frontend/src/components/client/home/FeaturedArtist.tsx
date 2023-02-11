@@ -9,7 +9,7 @@ type Props = {
 
 const FeaturedArtist: FC<Props> = ({ data }) => {
   return (
-    <section className="w-full mx-auto mt-10 flex flex-col justify-center items-center px-10">
+    <section className="w-full mx-auto mt-10 flex flex-col justify-center items-center px-5">
       <h2 className="text-xl text-black font-semibold self-start">
         Top Artists
       </h2>

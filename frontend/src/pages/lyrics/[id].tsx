@@ -33,24 +33,22 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
       content={
         lyrics.artistName + " " + lyrics.trackName + " - " + metaDescription
       }>
-      <div className="px-10 py-5 flex gap-4 shadow-sm font-Poppins">
-        <div className="w-1/2">
-          <div className="w-52 md:w-72 md:h-72">
-            <img
-              src={lyrics.artwork}
-              alt="lyrics artwork"
-              className="rounded-xl"
-            />
-          </div>
+      <div className="px-10 py-8 flex gap-1 shadow-sm font-Poppins">
+        <div className="w-52 md:w-72 md:h-72">
+          <img
+            src={lyrics.artwork}
+            alt="lyrics artwork"
+            className="rounded-xl"
+          />
         </div>
-        <div className="w-1/2">
-          <div className="text-md md:text-lg mb-2 font-semibold text-lightBlack">
+        <div>
+          <div className="text-xs md:text-lg mb-2 font-semibold text-lightBlack">
             Lyrics
           </div>
-          <p className="text-md md:text-lg mb-2 font-semibold text-black dark:text-primary">
+          <p className="text-xs md:text-lg mb-2 font-semibold text-black dark:text-primary">
             {lyrics.trackName}
           </p>
-          <p className="text-md md:text-lg mb-2 font-semibold text-lightBlack ">
+          <p className="text-xs md:text-lg mb-2 font-semibold text-lightBlack ">
             {lyrics.artistName}
           </p>
           <div className="w-full mx-auto">
@@ -66,7 +64,7 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
           </div>
         </div>
       </div>
-      <div className="md:grid md:grid-cols-6 gap-10 p-10 flex flex-col justify-center">
+      <div className="md:grid md:grid-cols-6 gap-10 p-10 flex flex-col justify-center font-Poppins">
         <div className="lyrics font-Crimson text-center md:text-justify col-span-4">
           {parse(lyrics.lyrics)}
         </div>

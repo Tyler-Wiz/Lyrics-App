@@ -6,6 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
 import { useGetAllSongsQuery } from "@/store/reducers/songsApi";
+import { ISong } from "@/common/models/interfaces";
 
 const TopNav = () => {
   const [filteredData, setFilteredData] = useState<string[]>([]);
@@ -36,7 +37,7 @@ const TopNav = () => {
       <MobileNav />
       <div className="relative w-4/5 group">
         <input
-          className="w-full outline-none py-2 rounded-lg font-Crimson text-black bg-lightGrey dark:text-primary px-2 text-xs focus:text-[16px]"
+          className="w-full outline-none py-2 rounded-lg font-Crimson text-black bg-lightGrey dark:text-primary px-2 text-xs focus:text-[13px]"
           placeholder="Search"
           value={wordEntered}
           onChange={handleFilter}
@@ -48,26 +49,33 @@ const TopNav = () => {
         <div className="hidden group-hover:block z-50">
           <div className="w-full px-3 h-auto max-h-72 mx-auto overflow-scroll flex flex-col font-Crimson gap-2 dark:text-primary dark:bg-black absolute bg-navbackground shadow-md rounded-lg">
             {filteredData &&
-              filteredData.map((item: any, index) => (
-                <Link key={item.id} href={`${"/lyrics/" + item.id}`}>
-                  <div className="py-2 flex gap-2 items-center">
-                    <div className="relative w-12">
-                      <img
-                        src={item.artwork}
-                        alt="artwork"
-                        className="rounded-lg shadow-lg hover:scale-105 cursor-pointer"
-                      />
+              filteredData.map((item: any) => (
+                <div
+                  key={item.id}
+                  onClick={() => {
+                    setFilteredData([]);
+                    setWordEntered("");
+                  }}>
+                  <Link href={`${"/lyrics/" + item.id}`}>
+                    <div className="py-2 flex gap-2 items-center">
+                      <div className="relative w-12">
+                        <img
+                          src={item.artwork}
+                          alt="artwork"
+                          className="rounded-lg shadow-lg hover:scale-105 cursor-pointer"
+                        />
+                      </div>
+                      <div>
+                        <p className="text-xs font-medium text-black capitalize dark:text-primary">
+                          {item.trackName}
+                        </p>
+                        <p className="text-xs text-lightBlack">
+                          {item.artistName}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-xs font-medium text-black capitalize dark:text-primary">
-                        {item.trackName}
-                      </p>
-                      <p className="text-xs text-lightBlack">
-                        {item.artistName}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               ))}
           </div>
         </div>
