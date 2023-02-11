@@ -9,14 +9,14 @@ interface Props {
 
 const FeaturedAlbum: FC<Props> = ({ data }) => {
   return (
-    <>
+    <section>
       <RenderAlbumList
         data={data}
         initialNumber={0}
         finalNumber={4}
         title="New Albums"
       />
-    </>
+    </section>
   );
 };
 

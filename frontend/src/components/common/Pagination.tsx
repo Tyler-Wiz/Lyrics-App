@@ -32,13 +32,13 @@ const Pagination: FC<Props> = ({
   return (
     <div className="flex mt-12 justify-center font-display text-sm">
       <span
-        className="flex items-center bg-gray-50 mx-2 px-3 shadow-lg border-2 cursor-pointer rounded-md"
+        className="flex items-center  mx-2 md:px-3 px-1 shadow-lg border-2 cursor-pointer rounded-md"
         onClick={handlePreviousPage}>
         <MdOutlineArrowBack size={25} />
       </span>
       {pages.map((page) => (
         <span
-          className={`bg-gray-50  mr-2 py-2 px-4 shadow-lg border-2 cursor-pointer rounded-md ${
+          className={`mr-2 md:py-2 md:px-4 py-1 px-2 shadow-lg border-2 cursor-pointer rounded-md ${
             currentPage === page ? "bg-black text-white" : ""
           } `}
           key={page}
@@ -47,7 +47,7 @@ const Pagination: FC<Props> = ({
         </span>
       ))}
       <span
-        className="flex items-center bg-gray-50 mx-2 px-3 shadow-lg border-2 cursor-pointer rounded-md"
+        className="flex items-center mx-2 md:px-3 px-1 shadow-lg border-2 cursor-pointer rounded-md"
         onClick={handleNextPage}>
         <MdOutlineArrowForward size={25} />
       </span>

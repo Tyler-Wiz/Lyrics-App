@@ -8,9 +8,9 @@ interface Props {
 
 const Trending: FC<Props> = ({ data }) => {
   return (
-    <>
+    <section>
       <RenderLyricsList data={data} header="Trending Lyrics" />
-    </>
+    </section>
   );
 };
 

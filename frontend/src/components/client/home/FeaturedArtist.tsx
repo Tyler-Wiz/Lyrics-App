@@ -9,11 +9,11 @@ type Props = {
 
 const FeaturedArtist: FC<Props> = ({ data }) => {
   return (
-    <>
-      <h2 className="px-5 md:px-10 mt-10 text-xl text-black font-semibold">
+    <section className="w-full mx-auto mt-10 flex flex-col justify-center items-center px-10">
+      <h2 className="text-xl text-black font-semibold self-start">
         Top Artists
       </h2>
-      <div className="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-10 gap-6 px-10 md:px-10 mt-6 mb-20 font-Poppins">
+      <div className="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-10 gap-6 mt-6 mb-20 font-Poppins">
         {data.map((item) => (
           <div key={item.id} className="">
             <Link href={`${"/artist/" + item.id}`}>
@@ -31,7 +31,7 @@ const FeaturedArtist: FC<Props> = ({ data }) => {
           </div>
         ))}
       </div>
-    </>
+    </section>
   );
 };
 
