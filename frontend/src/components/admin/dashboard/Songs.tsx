@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ISong } from "@/common/models/interfaces";
 import Pagination from "@/components/common/Pagination";
+import { useGetAllSongsQuery } from "@/store/reducers/songsApi";
 import Link from "next/link";
 import React, { FC, useState } from "react";
 import { BiEditAlt } from "react-icons/bi";
@@ -12,8 +13,9 @@ type Props = {
 const Songs: FC<Props> = ({ data }) => {
   const [filteredData, setFilteredData] = useState(data);
   const [wordEntered, setWordEntered] = useState("");
+  const searchData = useGetAllSongsQuery();
 
-  const productPerPage = 100;
+  const productPerPage = 50;
   const [currentPage, setcurrentPage] = useState<number>(1);
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
@@ -21,7 +23,7 @@ const Songs: FC<Props> = ({ data }) => {
   const handleFilter = (event: any) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter: any = data.filter((value: ISong) => {
+    const newFilter: any = searchData.data.filter((value: ISong) => {
       return (
         value.trackName.toLowerCase().includes(searchWord.toLowerCase()) ||
         value.artistName.toLowerCase().includes(searchWord.toLowerCase()) ||

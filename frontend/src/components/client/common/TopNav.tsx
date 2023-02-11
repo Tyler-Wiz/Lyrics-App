@@ -37,7 +37,7 @@ const TopNav = () => {
       <MobileNav />
       <div className="relative w-4/5 group">
         <input
-          className="w-full outline-none py-2 rounded-lg font-Crimson text-black bg-lightGrey dark:text-primary px-2 text-xs focus:text-[13px]"
+          className="w-full outline-none py-2 rounded-lg font-Crimson text-black bg-lightGrey dark:text-primary px-2 text-xs focus:text-[16px]"
           placeholder="Search"
           value={wordEntered}
           onChange={handleFilter}
