@@ -33,15 +33,17 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
       content={
         lyrics.artistName + " " + lyrics.trackName + " - " + metaDescription
       }>
-      <div className="px-10 py-8 flex gap-4 shadow-sm font-Crimson">
-        <div className="w-64 md:w-72 md:h-72">
-          <img
-            src={lyrics.artwork}
-            alt="lyrics artwork"
-            className="rounded-xl"
-          />
+      <div className="px-10 py-5 flex gap-4 shadow-sm font-Poppins">
+        <div className="w-1/2">
+          <div className="w-52 md:w-72 md:h-72">
+            <img
+              src={lyrics.artwork}
+              alt="lyrics artwork"
+              className="rounded-xl"
+            />
+          </div>
         </div>
-        <div className="py-10">
+        <div className="w-1/2">
           <div className="text-md md:text-lg mb-2 font-semibold text-lightBlack">
             Lyrics
           </div>
