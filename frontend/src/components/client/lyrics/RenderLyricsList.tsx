@@ -18,13 +18,11 @@ const RenderLyricsList: FC<Props> = ({ data, header }) => {
         {data.map((item) => (
           <div key={item.id} className="my-4">
             <Link href={`${"/lyrics/" + item.id}`}>
-              <div className="relative w-52 h-52 md:w-48 md:h-48">
-                <img
-                  src={item.artwork}
-                  alt="artwork"
-                  className="rounded-lg shadow-lg hover:scale-105 w-auto h-auto object-cover cursor-pointer"
-                />
-              </div>
+              <img
+                src={item.artwork}
+                alt="artwork"
+                className="rounded-lg shadow-lg hover:scale-105 w-auto h-auto object-cover cursor-pointer"
+              />
             </Link>
             <p className="text-sm sm:text-xs md:text-sm  mt-4 font-medium text-black capitalize dark:text-primary">
               {item.trackName}
