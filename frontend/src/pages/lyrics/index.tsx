@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import Layout from "@/components/client/common/Layout";
 import RenderLyricsList from "@/components/client/lyrics/RenderLyricsList";
 import { getSongs } from "@/api/data";
@@ -22,14 +22,7 @@ const Index: NextPage<Props> = ({ newLyrics }) => {
 
 export default Index;
 
-export const getServerSideProps: GetServerSideProps<{}> = async ({
-  req,
-  res,
-}) => {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
-  );
+export const getStaticProps: GetStaticProps = async () => {
   const data = await getSongs();
   const newLyrics = data.filter((item: any) => {
     if (item.category.includes("new")) {
