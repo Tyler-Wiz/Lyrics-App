@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import React from "react";
 import Layout from "@/components/client/common/Layout";
 import { getAlbums } from "@/api/data";
