@@ -29,6 +29,10 @@ export default function App({ Component, pageProps }: AppProps) {
                     gtag('config', 'G-L4JQYGRK70');
                 `}
       </Script>
+      <Script
+        data-ad-client="ca-pub-1115876871453816"
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></Script>
       <Provider store={store}>
         <ThemeProvider enableSystem={true} attribute="class">
           <Component {...pageProps} />
