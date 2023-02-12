@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Layout from "@/components/client/common/Layout";
 import parse from "html-react-parser";
 import Image from "next/image";
@@ -17,6 +17,22 @@ import RelatedPost from "@/components/common/RelatedPost";
 type Props = {
   lyrics: ISong;
   related: [];
+};
+
+export const getStaticPaths = async () => {
+  const data = await getSongs();
+  const paths = data.map((lyrics: ISong) => {
+    return {
+      params: {
+        id: lyrics.id,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
 const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
@@ -81,28 +97,41 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
 
 export default LyricsPage;
 
-export const getServerSideProps = async (context: any) => {
-  context.res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
-  );
+// export const getServerSideProps = async (context: any) => {
+//   context.res.setHeader(
+//     "Cache-Control",
+//     "public, s-maxage=10, stale-while-revalidate=59"
+//   );
 
+//   const { params } = context;
+//   const { id } = params;
+//   const data = await getSongs();
+//   const lyrics = data?.find((item: any) => item.id === id);
+
+//   const relatedData = data.filter((item: any) => {
+//     if (item.artistName?.includes(lyrics.artistName)) {
+//       return item;
+//     }
+//   });
+
+//   const related = shuffle(relatedData);
+//   return {
+//     props: {
+//       lyrics,
+//       related,
+//     },
+//   };
+// };
+
+export const getStaticProps: GetStaticProps = async (context: any) => {
   const { params } = context;
   const { id } = params;
   const data = await getSongs();
   const lyrics = data?.find((item: any) => item.id === id);
 
-  const relatedData = data.filter((item: any) => {
-    if (item.artistName?.includes(lyrics.artistName)) {
-      return item;
-    }
-  });
-
-  const related = shuffle(relatedData);
   return {
     props: {
       lyrics,
-      related,
     },
   };
 };

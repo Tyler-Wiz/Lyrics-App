@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Layout from "@/components/client/common/Layout";
 import NewSingle from "@/components/client/home/NewSingle";
 import Trending from "@/components/client/home/Trending";
@@ -40,14 +40,7 @@ const Home: NextPage<Iprops> = ({
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps<{}> = async ({
-  req,
-  res,
-}) => {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
-  );
+export const getStaticProps: GetStaticProps = async () => {
   const data = await getSongs();
   const artists = await getArtists();
   const albums = await getAlbums();
