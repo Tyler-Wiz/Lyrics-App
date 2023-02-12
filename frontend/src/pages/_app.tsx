@@ -7,7 +7,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Script from "next/script";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
@@ -17,22 +16,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=$G-L4JQYGRK70`}
-      />
-      <Script id="google-analytics" strategy="lazyOnload">
-        {`
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', 'G-L4JQYGRK70');
-                `}
-      </Script>
-      <Script
-        data-ad-client="ca-pub-1115876871453816"
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></Script>
       <Provider store={store}>
         <ThemeProvider enableSystem={true} attribute="class">
           <Component {...pageProps} />

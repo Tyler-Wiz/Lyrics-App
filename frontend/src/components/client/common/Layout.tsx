@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import TopNav from "./TopNav";
 import { year } from "@/common/hooks/getYear";
 import Nav from "./Nav";
+import Script from "next/script";
 
 type Props = {
   title: string;
@@ -19,6 +20,22 @@ const Layout: FC<Props> = ({ title, children, content }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=$G-L4JQYGRK70`}
+      />
+      <Script id="google-analytics" strategy="lazyOnload">
+        {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-L4JQYGRK70');
+                `}
+      </Script>
+      <Script
+        data-ad-client="ca-pub-1115876871453816"
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></Script>
       <div className="flex gap-2">
         <header className="md:w-[18%] md:fixed md:block hidden h-screen">
           <Nav />
