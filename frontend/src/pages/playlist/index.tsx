@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import Layout from "@/components/client/common/Layout";
 import React from "react";
 import Link from "next/link";
@@ -38,7 +38,15 @@ const Index: NextPage<Props> = ({ data }) => {
 
 export default Index;
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps<{}> = async ({
+  req,
+  res,
+}) => {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+
   const data = await getPlaylist();
 
   return {
@@ -46,4 +54,4 @@ export async function getServerSideProps() {
       data,
     },
   };
-}
+};

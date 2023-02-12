@@ -1,7 +1,7 @@
 import { getAlbums } from "@/api/data";
 import Layout from "@/components/client/common/Layout";
 import RenderAlbumList from "@/components/client/album/RenderAlbumList";
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import React from "react";
 import { IAlbum } from "@/common/models/interfaces";
 
@@ -24,7 +24,15 @@ const Index: NextPage<Props> = ({ albums }) => {
 
 export default Index;
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps<{}> = async ({
+  req,
+  res,
+}) => {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+
   const albums = await getAlbums();
 
   return {
@@ -32,4 +40,4 @@ export async function getServerSideProps() {
       albums,
     },
   };
-}
+};

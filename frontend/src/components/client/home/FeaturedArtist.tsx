@@ -2,6 +2,7 @@
 import React, { FC } from "react";
 import Link from "next/link";
 import { IArtists } from "@/common/models/interfaces";
+import Image from "next/image";
 
 type Props = {
   data: [IArtists];
@@ -17,10 +18,11 @@ const FeaturedArtist: FC<Props> = ({ data }) => {
         {data.map((item) => (
           <div key={item.id} className="">
             <Link href={`${"/artist/" + item.id}`}>
-              <div className="w-auto h-auto">
-                <img
+              <div className="relative w-20 h-20 md:w-24 md:h-24 ">
+                <Image
                   src={item.url}
                   alt="artwork"
+                  fill
                   className="rounded-full shadow-lg hover:scale-105 cursor-pointer object-cover"
                 />
               </div>

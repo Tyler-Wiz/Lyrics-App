@@ -1,4 +1,5 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 import Layout from "@/components/client/common/Layout";
 import NewSingle from "@/components/client/home/NewSingle";
 import Trending from "@/components/client/home/Trending";
@@ -40,7 +41,14 @@ const Home: NextPage<Iprops> = ({
 
 export default Home;
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps<{}> = async ({
+  req,
+  res,
+}) => {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
   const data = await getSongs();
   const artists = await getArtists();
   const albums = await getAlbums();
@@ -79,4 +87,4 @@ export async function getServerSideProps() {
       playlistData,
     },
   };
-}
+};
