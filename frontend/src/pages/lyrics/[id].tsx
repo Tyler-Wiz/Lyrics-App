@@ -19,22 +19,6 @@ type Props = {
   related: [];
 };
 
-export const getStaticPaths = async () => {
-  const data = await getSongs();
-  const paths = data.map((lyrics: ISong) => {
-    return {
-      params: {
-        id: lyrics.id,
-      },
-    };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
 const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
   const preDescription = lyrics.lyrics.replace(/(<([^>]+)>)/gi, "");
   const metaDescription = preDescription.substring(0, 120);
@@ -97,41 +81,28 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
 
 export default LyricsPage;
 
-// export const getServerSideProps = async (context: any) => {
-//   context.res.setHeader(
-//     "Cache-Control",
-//     "public, s-maxage=10, stale-while-revalidate=59"
-//   );
+export const getServerSideProps = async (context: any) => {
+  context.res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
 
-//   const { params } = context;
-//   const { id } = params;
-//   const data = await getSongs();
-//   const lyrics = data?.find((item: any) => item.id === id);
-
-//   const relatedData = data.filter((item: any) => {
-//     if (item.artistName?.includes(lyrics.artistName)) {
-//       return item;
-//     }
-//   });
-
-//   const related = shuffle(relatedData);
-//   return {
-//     props: {
-//       lyrics,
-//       related,
-//     },
-//   };
-// };
-
-export const getStaticProps: GetStaticProps = async (context: any) => {
   const { params } = context;
   const { id } = params;
   const data = await getSongs();
   const lyrics = data?.find((item: any) => item.id === id);
 
+  const relatedData = data.filter((item: any) => {
+    if (item.artistName?.includes(lyrics.artistName)) {
+      return item;
+    }
+  });
+
+  const related = shuffle(relatedData);
   return {
     props: {
       lyrics,
+      related,
     },
   };
 };
