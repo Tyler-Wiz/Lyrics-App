@@ -1,12 +1,10 @@
 import { GetServerSideProps, NextPage } from "next";
 import Layout from "@/components/client/common/Layout";
-import NewSingle from "@/components/client/home/NewSingle";
 import Trending from "@/components/client/home/Trending";
 import FeaturedArtist from "@/components/client/home/FeaturedArtist";
-import FeaturedAlbum from "@/components/client/home/FeaturedAlbum";
-import Playlist from "@/components/client/home/Playlist";
 import { getAlbums, getArtists, getPlaylist, getSongs } from "@/api/data";
 import { IAlbum, IArtists, IPlaylist, ISong } from "@/common/models/interfaces";
+import HomeDynamic from "@/components/client/home/HomeDynamic";
 
 interface Iprops {
   trending: [ISong];
@@ -30,9 +28,11 @@ const Home: NextPage<Iprops> = ({
         content="tooXclusive Lyrics Website Provides the Latest Lyrics from Wizkid, Burna Boy, Asake, Ayra Starr, Black Sherif, Davido and Other Afrobeats">
         <FeaturedArtist data={featuredArtist} />
         <Trending data={trending} />
-        <NewSingle data={newLyrics} />
-        <FeaturedAlbum data={featuredAlbums} />
-        <Playlist data={playlistData} />
+        <HomeDynamic
+          data={newLyrics}
+          album={featuredAlbums}
+          playlist={playlistData}
+        />
       </Layout>
     </>
   );
