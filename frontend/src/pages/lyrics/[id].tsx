@@ -82,6 +82,11 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
 export default LyricsPage;
 
 export const getServerSideProps = async (context: any) => {
+  context.res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+
   const { params } = context;
   const { id } = params;
   const data = await getSongs();
