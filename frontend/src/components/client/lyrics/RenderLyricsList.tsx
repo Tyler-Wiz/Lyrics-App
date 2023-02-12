@@ -21,7 +21,7 @@ const RenderLyricsList: FC<Props> = ({ data, header }) => {
               <img
                 src={item.artwork}
                 alt="artwork"
-                className="rounded-lg shadow-lg hover:scale-105 cursor-pointer"
+                className="rounded-lg shadow-lg hover:scale-105 w-auto h-auto object-cover cursor-pointer"
               />
             </Link>
             <p className="text-sm sm:text-xs md:text-sm  mt-4 font-medium text-black capitalize dark:text-primary">

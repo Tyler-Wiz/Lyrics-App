@@ -13,15 +13,15 @@ const NewSingle: FC<Props> = ({ data }) => {
       <h2 className="px-5 md:px-10 mt-16 text-xl text-black font-semibold dark:text-primary">
         New Lyrics
       </h2>
-      <div className="container mx-auto grid grid-cols-2 md:grid-cols-6  gap-6 px-5 md:px-10 mt-6 mb-20 font-Crimson">
+      <div className="w-full mx-auto grid grid-cols-2 md:grid-cols-6 gap-6 px-5 md:px-10 mt-6 mb-20 font-Crimson">
         {data.slice(0, 6).map((item: ISong) => (
           <div key={item.id}>
             <Link href={`${"/lyrics/" + item.id}`}>
-              <div className="w-auto h-auto">
+              <div className="md:w-40 md:h-40 w-auto h-48 ">
                 <img
                   src={item.artwork}
                   alt="artwork"
-                  className="rounded-lg shadow-lg hover:scale-105 cursor-pointer"
+                  className="rounded-lg shadow-lg hover:scale-105 w-full h-full object-cover cursor-pointer"
                 />
               </div>
             </Link>

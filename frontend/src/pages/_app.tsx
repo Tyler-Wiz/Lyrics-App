@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Script from "next/script";
 
 export default function App({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
@@ -15,15 +16,29 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [pathname]);
 
   return (
-    <Provider store={store}>
-      <ThemeProvider enableSystem={true} attribute="class">
-        <Component {...pageProps} />
-      </ThemeProvider>
-      <ToastContainer
-        autoClose={1000}
-        hideProgressBar={true}
-        pauseOnHover={false}
+    <>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=$G-L4JQYGRK70`}
       />
-    </Provider>
+      <Script id="google-analytics" strategy="lazyOnload">
+        {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-L4JQYGRK70');
+                `}
+      </Script>
+      <Provider store={store}>
+        <ThemeProvider enableSystem={true} attribute="class">
+          <Component {...pageProps} />
+        </ThemeProvider>
+        <ToastContainer
+          autoClose={1000}
+          hideProgressBar={true}
+          pauseOnHover={false}
+        />
+      </Provider>
+    </>
   );
 }

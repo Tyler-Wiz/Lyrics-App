@@ -36,7 +36,6 @@ const UploadForm: FC = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data, e: any) => {
     const newData = { ...data, artwork: image };
-    console.log(newData);
     try {
       const updated = await axios.post(`${serverURL}songs`, {
         data: newData,
