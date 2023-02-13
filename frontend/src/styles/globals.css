@@ -7,12 +7,12 @@
 @tailwind utilities;
 
 .lyrics p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 2rem;
 }
 
 .lyrics h2 {
-  font-size: 20px;
+  font-size: 18px;
   margin: 1.8rem 0 0 0;
   font-weight: 600;
 }

@@ -65,13 +65,10 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
         </div>
       </div>
       <div className="md:grid md:grid-cols-6 gap-10 p-10 flex flex-col justify-center font-Poppins">
-        <div className="lyrics font-Crimson text-center md:text-justify col-span-4">
+        <div className="lyrics font-Poppins text-center md:text-justify col-span-4">
           {parse(lyrics.lyrics)}
         </div>
-        <div className="col-span-2 ">
-          <div className="relative w-[300px] h-[600px] mx-auto">
-            <Image src={banner600} fill alt="lyrics artwork" />
-          </div>
+        <div className="col-span-2">
           <RelatedPost data={related} />
         </div>
       </div>
