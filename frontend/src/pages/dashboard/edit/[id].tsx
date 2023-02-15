@@ -155,15 +155,15 @@ const EditSong: FC<Props> = ({ lyrics }) => {
               />
             </div>
             <div>
-              <p className="mb-1 text-xs">youtube</p>
+              <p className="mb-1 text-xs">album</p>
               <input
                 type="text"
-                value={tempLyrics.youtube}
+                value={tempLyrics.album}
                 className="edit_input mb-4"
                 onChange={(e) => {
                   setTempLyrics({
                     ...tempLyrics,
-                    youtube: e.target.value,
+                    album: e.target.value,
                   });
                 }}
               />

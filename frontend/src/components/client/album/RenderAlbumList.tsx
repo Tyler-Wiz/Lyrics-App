@@ -31,7 +31,7 @@ const RenderAlbumList: FC<Props> = ({
                 alt="artwork"
                 className="rounded-lg shadow-lg hover:scale-95 cursor-pointer"
               />
-              <p className="text-sm my-2 font-medium text-black dark:text-primary">
+              <p className="text-sm my-2 font-medium text-black dark:text-primary capitalize">
                 {item.albumName}
               </p>
               <p className="text-sm my-2 text-lightBlack">{item.artistName}</p>

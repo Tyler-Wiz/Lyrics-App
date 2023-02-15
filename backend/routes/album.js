@@ -16,7 +16,6 @@ router.post("/", async (req, res) => {
           artistName,
           tag,
           id,
-          songs,
           artwork: uploadImg.url,
         });
         album = await album.save();

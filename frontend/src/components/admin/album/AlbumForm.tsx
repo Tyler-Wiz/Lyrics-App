@@ -12,33 +12,7 @@ const AlbumUploadForm = () => {
     tag: "",
     id: "",
   });
-  const [formFields, setFormFields] = useState([
-    {
-      artistName: "",
-      id: "",
-      lyrics: "",
-      trackName: "",
-      duration: "",
-    },
-  ]);
   const [image, setImage] = useState<any>("");
-
-  const addFields = () => {
-    let object: IAlbumForm = {
-      artistName: "",
-      id: "",
-      lyrics: "",
-      trackName: "",
-      duration: "",
-    };
-    setFormFields([...formFields, object]);
-  };
-
-  const removeFields = (index: number) => {
-    let data = [...formFields];
-    data.splice(index, 1);
-    setFormFields(data);
-  };
 
   const handleImageSubmit = (e: any) => {
     const file = e.target.files[0];
@@ -55,15 +29,9 @@ const AlbumUploadForm = () => {
     }
   };
 
-  const handleFormChange = (event: any, index: number) => {
-    let data: any = [...formFields];
-    data[index][event.target.name] = event.target.value;
-    setFormFields(data);
-  };
-
   const submit = async (e: any) => {
     e.preventDefault();
-    const newData = { ...albumFields, artwork: image, songs: formFields };
+    const newData = { ...albumFields, artwork: image };
     try {
       const updated = await axios.post(`${serverURL}albums`, {
         data: newData,
@@ -87,15 +55,6 @@ const AlbumUploadForm = () => {
       tag: "",
       id: "",
     });
-    setFormFields([
-      {
-        artistName: "",
-        id: "",
-        lyrics: "",
-        trackName: "",
-        duration: "",
-      },
-    ]);
   };
 
   return (
@@ -155,63 +114,6 @@ const AlbumUploadForm = () => {
               className="edit_input"
               required
             />
-            <div className="w-2/3">
-              <button
-                onClick={addFields}
-                className="mt-6 bg-accentColor text-white px-4 py-2 rounded-md mb-3">
-                Add More Track
-              </button>
-              {formFields.map((form, index) => {
-                return (
-                  <div key={index} className="mb-10 rounded-md ">
-                    <input
-                      name="trackName"
-                      placeholder="trackName"
-                      onChange={(event) => handleFormChange(event, index)}
-                      value={form.trackName}
-                      className="edit_input"
-                      required
-                    />
-                    <input
-                      name="artistName"
-                      placeholder="artistName"
-                      onChange={(event) => handleFormChange(event, index)}
-                      value={form.artistName}
-                      className="edit_input"
-                      required
-                    />
-                    <input
-                      name="id"
-                      placeholder="id"
-                      onChange={(event) => handleFormChange(event, index)}
-                      value={form.id}
-                      className="edit_input"
-                      required
-                    />
-                    <input
-                      name="duration"
-                      placeholder="duration"
-                      onChange={(event) => handleFormChange(event, index)}
-                      value={form.duration}
-                      className="edit_input"
-                      required
-                    />
-                    <textarea
-                      name="lyrics"
-                      placeholder="lyrics"
-                      onChange={(event) => handleFormChange(event, index)}
-                      value={form.lyrics}
-                      className="edit_input h-[400px]"
-                      required></textarea>
-                    <button
-                      className="mt-6 bg-accentColor text-white px-4 py-2 rounded-md mx-2 "
-                      onClick={() => removeFields(index)}>
-                      Remove
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
           </div>
           <div className="w-1/4">
             <input

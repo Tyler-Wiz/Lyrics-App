@@ -13,7 +13,7 @@ type Props = {
 };
 
 const ArtistLyrics: FC<Props> = ({ data }) => {
-  const productPerPage = 10;
+  const productPerPage = 20;
   const [currentPage, setcurrentPage] = useState<number>(1);
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
@@ -65,7 +65,7 @@ const ArtistLyrics: FC<Props> = ({ data }) => {
           </div>
         );
       })}
-      {data.length <= 10 ? null : (
+      {data.length <= 20 ? null : (
         <Pagination
           data={newData}
           productPerPage={productPerPage}

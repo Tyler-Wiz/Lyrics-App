@@ -4,6 +4,7 @@ import TopNav from "./TopNav";
 import { year } from "@/common/hooks/getYear";
 import Nav from "./Nav";
 import Script from "next/script";
+import Footer from "./Footer";
 
 type Props = {
   title: string;

@@ -8,7 +8,7 @@ interface Props {
 
 const Trending: FC<Props> = ({ data }) => {
   return (
-    <section>
+    <section className="my-14">
       <RenderLyricsList data={data} header="Trending Lyrics" />
     </section>
   );

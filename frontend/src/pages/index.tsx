@@ -1,38 +1,23 @@
 import { GetServerSideProps, NextPage } from "next";
 import Layout from "@/components/client/common/Layout";
 import Trending from "@/components/client/home/Trending";
-import FeaturedArtist from "@/components/client/home/FeaturedArtist";
-import { getAlbums, getArtists, getPlaylist, getSongs } from "@/api/data";
-import { IAlbum, IArtists, IPlaylist, ISong } from "@/common/models/interfaces";
+import { getSongs } from "@/api/data";
+import { ISong } from "@/common/models/interfaces";
 import HomeDynamic from "@/components/client/home/HomeDynamic";
 
 interface Iprops {
   trending: [ISong];
   newLyrics: [ISong];
-  featuredArtist: [IArtists];
-  featuredAlbums: [IAlbum];
-  playlistData: [IPlaylist];
 }
 
-const Home: NextPage<Iprops> = ({
-  newLyrics,
-  trending,
-  featuredArtist,
-  featuredAlbums,
-  playlistData,
-}) => {
+const Home: NextPage<Iprops> = ({ newLyrics, trending }) => {
   return (
     <>
       <Layout
         title="Latest Music Lyrics"
         content="tooXclusive Lyrics Website Provides the Latest Lyrics from Wizkid, Burna Boy, Asake, Ayra Starr, Black Sherif, Davido and Other Afrobeats">
-        <FeaturedArtist data={featuredArtist} />
         <Trending data={trending} />
-        <HomeDynamic
-          data={newLyrics}
-          album={featuredAlbums}
-          playlist={playlistData}
-        />
+        <HomeDynamic data={newLyrics} />
       </Layout>
     </>
   );
@@ -49,10 +34,6 @@ export const getServerSideProps: GetServerSideProps<{}> = async ({
     "public, s-maxage=10, stale-while-revalidate=59"
   );
   const data = await getSongs();
-  const artists = await getArtists();
-  const albums = await getAlbums();
-  const playlistData = await getPlaylist();
-
   const lyricsData = data.reverse();
 
   const newLyrics = lyricsData.filter((item: any) => {
@@ -60,30 +41,18 @@ export const getServerSideProps: GetServerSideProps<{}> = async ({
       return item;
     }
   });
-  const trending = lyricsData.filter((item: any) => {
-    if (item.tag?.includes("trending")) {
-      return item;
-    }
-  });
-  const featuredArtist = artists.filter((item: any) => {
+  const trendingdata = lyricsData.filter((item: any) => {
     if (item.tag?.includes("trending")) {
       return item;
     }
   });
 
-  const featuredAlbums = albums.filter((item: any) => {
-    if (item.tag?.includes("featured")) {
-      return item;
-    }
-  });
+  const trending = trendingdata.slice(0, 10);
 
   return {
     props: {
       newLyrics,
       trending,
-      featuredArtist,
-      featuredAlbums,
-      playlistData,
     },
   };
 };

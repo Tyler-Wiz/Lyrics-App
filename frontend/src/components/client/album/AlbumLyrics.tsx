@@ -25,7 +25,7 @@ const AlbumLyrics: FC<Props> = ({ data, id, albumName, albumArtwork }) => {
           <img src={albumArtwork} alt="Album image" />
         </div>
         <div className="font-Crimson capitalize">
-          <p className="text-xl md:text-2xl">Album Name: {albumName} </p>
+          <p className="text-xl md:text-xl">Album Name: {albumName} </p>
           <p>Songs: {data.length}</p>
           <p>release Date: 2022 </p>
         </div>

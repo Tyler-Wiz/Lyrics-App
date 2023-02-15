@@ -1,31 +1,43 @@
-import { GetServerSideProps, NextPage } from "next";
+/* eslint-disable @next/next/no-img-element */
+import { NextPage } from "next";
 import React from "react";
 import Layout from "@/components/client/common/Layout";
-import { getAlbums } from "@/api/data";
-import AlbumLyrics from "@/components/client/album/AlbumLyrics";
-import { IAlbumContent } from "@/common/models/interfaces";
+import { getAlbums, getSongs } from "@/api/data";
+import { ISong } from "@/common/models/interfaces";
+import ArtistLyrics from "@/components/client/lyrics/ArtistLyrics";
 
 type Props = {
-  selectedAlbum: IAlbumContent;
-  id: string;
+  album: any;
+  albumSongs: [ISong];
 };
 
-const AlbumPage: NextPage<Props> = ({ selectedAlbum, id }) => {
-  const data = selectedAlbum?.songs;
-  const albumName = selectedAlbum?.albumName;
-  const albumArtwork = selectedAlbum?.artwork;
-
+const AlbumPage: NextPage<Props> = ({ album, albumSongs }) => {
   return (
     <Layout
-      title={`${selectedAlbum.albumName} | ${selectedAlbum.artistName}`}
-      content={`${selectedAlbum.albumName} | ${selectedAlbum.artistName}`}>
-      <div className="mx-auto px-10">
-        <AlbumLyrics
-          data={data}
-          id={id}
-          albumName={albumName}
-          albumArtwork={albumArtwork}
-        />
+      title={album[0].albumName}
+      content={`Latest ${album[0].albumName} lyrics`}>
+      <div className="text-xs px-10 mt-10 flex flex-col md:flex-row items-center font-Poppins gap-2">
+        <div className="w-72 h-72">
+          <img
+            src={album[0].artwork}
+            alt="artist Image"
+            className="object-cover h-full"
+          />
+        </div>
+        <div className="md:w-1/4 flex flex-col items-center md:items-start text-center md:text-justify capitalize text-lg">
+          <p>{album[0].albumName}</p>
+          <div className="my-2 gap-3">
+            <p className="text-lg">
+              {albumSongs.length}
+              <span className="ml-2 text-sm text-lightBlack text-center">
+                Songs
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="px-10 my-10">
+        <ArtistLyrics data={albumSongs} />
       </div>
     </Layout>
   );
@@ -36,15 +48,25 @@ export default AlbumPage;
 export const getServerSideProps = async (context: any) => {
   const { params } = context;
   const { id } = params;
+  const data = await getSongs();
+  const albumData = await getAlbums();
 
-  const data = await getAlbums();
+  const album = albumData.filter((item: any) => {
+    if (item.id?.includes(id)) {
+      return item;
+    }
+  });
 
-  const selectedAlbum = data.find((x: any) => x.id === id);
+  const albumSongs = data.filter((item: any) => {
+    if (item.album?.includes(album[0].albumName)) {
+      return item;
+    }
+  });
 
   return {
     props: {
-      id,
-      selectedAlbum,
+      albumSongs,
+      album,
     },
   };
 };

@@ -95,7 +95,6 @@ const UploadForm: FC = () => {
             id="lyrics"
             placeholder="Lyrics"
             className="edit_input h-[450px]"
-            minLength={100}
             {...register("lyrics", { required: true })}></textarea>
         </div>
         <div className="w-1/3">

@@ -9,7 +9,7 @@ interface Props {
 
 const NewSingle: FC<Props> = ({ data }) => {
   return (
-    <>
+    <section>
       <h2 className="px-5 md:px-10 mt-16 text-xl text-black font-semibold dark:text-primary">
         New Lyrics
       </h2>
@@ -32,7 +32,7 @@ const NewSingle: FC<Props> = ({ data }) => {
           </div>
         ))}
       </div>
-    </>
+    </section>
   );
 };
 

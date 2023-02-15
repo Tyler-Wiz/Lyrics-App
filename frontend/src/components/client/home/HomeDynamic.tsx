@@ -6,26 +6,14 @@ const DynamicComponent = dynamic(
   () => import("@/components/client/home/NewSingle")
 );
 
-const DynamicAlbum = dynamic(
-  () => import("@/components/client/home/FeaturedAlbum")
-);
-
-const DynamicPlaylist = dynamic(
-  () => import("@/components/client/home/Playlist")
-);
-
 type Props = {
   data: [ISong];
-  album: [IAlbum];
-  playlist: [IPlaylist];
 };
 
-const HomeDynamic: FC<Props> = ({ data, album, playlist }) => {
+const HomeDynamic: FC<Props> = ({ data }) => {
   return (
     <div>
       <DynamicComponent data={data} />
-      <DynamicAlbum data={album} />
-      <DynamicPlaylist data={playlist} />
     </div>
   );
 };

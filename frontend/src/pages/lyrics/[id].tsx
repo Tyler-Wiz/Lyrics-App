@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import Layout from "@/components/client/common/Layout";
 import parse from "html-react-parser";
-import Image from "next/image";
-import banner600 from "@/assets/img/banner.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { AddFavorite } from "@/store/reducers/favoriteSlice";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
