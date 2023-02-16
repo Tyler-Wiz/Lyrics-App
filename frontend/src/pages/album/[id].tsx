@@ -14,31 +14,33 @@ type Props = {
 const AlbumPage: NextPage<Props> = ({ album, albumSongs }) => {
   return (
     <Layout
-      title={album[0].albumName}
+      title={`${album[0].albumName} by ${album[0].artistName} Lyrics And TrackList`}
       content={`Latest ${album[0].albumName} lyrics`}>
-      <div className="text-xs px-10 mt-10 flex flex-col md:flex-row items-center font-Poppins gap-2">
-        <div className="w-72 h-72">
-          <img
-            src={album[0].artwork}
-            alt="artist Image"
-            className="object-cover h-full"
-          />
-        </div>
-        <div className="md:w-1/4 flex flex-col items-center md:items-start text-center md:text-justify capitalize text-lg">
-          <p>{album[0].albumName}</p>
-          <div className="my-2 gap-3">
-            <p className="text-lg">
-              {albumSongs.length}
-              <span className="ml-2 text-sm text-lightBlack text-center">
-                Songs
-              </span>
-            </p>
+      <section>
+        <div className="text-xs px-10 mt-10 flex flex-col md:flex-row items-center font-Poppins gap-2">
+          <div className="w-72 h-72">
+            <img
+              src={album[0].artwork}
+              alt="artist Image"
+              className="object-cover h-full"
+            />
+          </div>
+          <div className="md:w-1/4 flex flex-col items-center md:items-start text-center md:text-justify capitalize text-lg">
+            <p>{album[0].albumName}</p>
+            <div className="my-2 gap-3">
+              <p className="text-lg">
+                {albumSongs.length}
+                <span className="ml-2 text-sm text-lightBlack text-center">
+                  Songs
+                </span>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="px-10 my-10">
-        <ArtistLyrics data={albumSongs} />
-      </div>
+        <div className="px-10 my-10">
+          <ArtistLyrics data={albumSongs} />
+        </div>
+      </section>
     </Layout>
   );
 };

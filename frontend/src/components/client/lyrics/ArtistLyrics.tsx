@@ -29,7 +29,7 @@ const ArtistLyrics: FC<Props> = ({ data }) => {
   const items = useSelector((state: RootState) => state.favorite.items);
 
   return (
-    <div>
+    <section>
       {pageProducts.map((item, index) => {
         let number = index + 1;
         const ItemIndex = items.find((x) => x.id === item.id);
@@ -73,7 +73,7 @@ const ArtistLyrics: FC<Props> = ({ data }) => {
           setcurrentPage={setcurrentPage}
         />
       )}
-    </div>
+    </section>
   );
 };
 

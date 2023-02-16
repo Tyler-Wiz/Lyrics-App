@@ -25,7 +25,7 @@ const NewSingle: FC<Props> = ({ data }) => {
                 />
               </div>
             </Link>
-            <p className="text-sm my-2 font-medium text-black dark:text-primary">
+            <p className="text-sm my-2 font-medium text-black dark:text-primary capitalize">
               {item.trackName}
             </p>
             <p className="text-sm my-2 text-lightBlack ">{item.artistName}</p>

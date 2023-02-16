@@ -36,6 +36,7 @@ export interface IAlbum {
   artwork: string;
   tag: string;
   id: string;
+  updatedAt: any;
 }
 
 export interface IAlbumContent {
