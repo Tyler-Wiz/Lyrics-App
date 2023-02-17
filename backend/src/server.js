@@ -38,6 +38,7 @@ mongoose
   .then(() => console.log("Mongo DB connect succesful"))
   .catch((error) => console.log("Mongo DB connect succesful", error));
 
+app.options("*", cors());
 app.use("/register", registerUser);
 app.use("/login", loginUser);
 app.use("/songs", songs);
