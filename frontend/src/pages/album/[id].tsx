@@ -26,6 +26,7 @@ const AlbumPage: NextPage<Props> = ({ album, albumSongs }) => {
             />
           </div>
           <div className="md:w-1/4 flex flex-col items-center md:items-start text-center md:text-justify capitalize text-lg">
+            <p className="text-xl my-1 font-medium">{album[0].artistName}</p>
             <p>{album[0].albumName}</p>
             <div className="my-2 gap-3">
               <p className="text-lg">

@@ -18,6 +18,7 @@ export interface ICategory {
 
 export interface ITag {
   trending: "trending";
+  gospel: "gospel";
 }
 
 export interface IPlaylist {

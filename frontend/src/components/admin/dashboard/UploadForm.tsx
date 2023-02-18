@@ -141,6 +141,7 @@ const UploadForm: FC = () => {
               className="edit_input w-1/2">
               <option value="">Tag</option>
               <option value="trending">Trending</option>
+              <option value="gospel">Gospel</option>
             </select>
             {errors.tag && (
               <span className="error">This field is required</span>

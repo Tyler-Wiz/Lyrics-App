@@ -95,7 +95,7 @@ const ArtistUploadForm: FC = () => {
             type="file"
             multiple
             name="myImage"
-            accept="image/jpeg"
+            accept="image/jpeg, image/png, image/webp "
             onChange={handleImageSubmit}
             required
             className="mb-6 mt-1"

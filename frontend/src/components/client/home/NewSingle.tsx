@@ -14,7 +14,7 @@ const NewSingle: FC<Props> = ({ data }) => {
         New Lyrics
       </h2>
       <div className="w-full mx-auto grid grid-cols-2 md:grid-cols-6 gap-6 px-5 md:px-10 mt-6 mb-20 font-Crimson">
-        {data.slice(0, 6).map((item: ISong) => (
+        {data.slice(0, 12).map((item: ISong) => (
           <div key={item.id}>
             <Link href={`${"/lyrics/" + item.id}`}>
               <div className="md:w-40 md:h-40 w-auto h-48 ">
@@ -25,10 +25,10 @@ const NewSingle: FC<Props> = ({ data }) => {
                 />
               </div>
             </Link>
-            <p className="text-sm my-2 font-medium text-black dark:text-primary capitalize">
+            <p className="text-sm my-1 font-medium text-black dark:text-primary capitalize">
               {item.trackName}
             </p>
-            <p className="text-sm my-2 text-lightBlack ">{item.artistName}</p>
+            <p className="text-sm my-1 text-lightBlack ">{item.artistName}</p>
           </div>
         ))}
       </div>
