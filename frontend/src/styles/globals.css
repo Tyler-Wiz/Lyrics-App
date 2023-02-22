@@ -6,6 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.lyrics {
+  line-height: 1.8rem;
+}
+
 .lyrics p {
   font-size: 16px;
   line-height: 2rem;
@@ -15,6 +19,7 @@
   font-size: 18px;
   margin: 1.8rem 0 0 0;
   font-weight: 600;
+  display: block;
 }
 
 .edit_input {
@@ -22,10 +27,6 @@
   padding: 0.5rem 1rem;
   outline: none;
   margin-bottom: 1rem;
-}
-
-.lyrics h2 {
-  display: block;
 }
 
 .error {

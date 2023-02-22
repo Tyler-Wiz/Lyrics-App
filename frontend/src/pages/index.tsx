@@ -4,6 +4,7 @@ import Trending from "@/components/client/home/Trending";
 import { getSongs } from "@/api/data";
 import { ISong } from "@/common/models/interfaces";
 import HomeDynamic from "@/components/client/home/HomeDynamic";
+import React, { Suspense } from "react";
 
 interface Iprops {
   trending: [ISong];
@@ -17,7 +18,9 @@ const Home: NextPage<Iprops> = ({ newLyrics, trending }) => {
         title="Latest Music Lyrics"
         content="tooXclusive Lyrics Website Provides the Latest Lyrics from Wizkid, Burna Boy, Asake, Ayra Starr, Black Sherif, Davido and Other Afrobeats">
         <Trending data={trending} />
-        <HomeDynamic data={newLyrics} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <HomeDynamic data={newLyrics} />
+        </Suspense>
       </Layout>
     </>
   );
