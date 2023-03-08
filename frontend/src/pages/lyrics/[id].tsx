@@ -88,7 +88,7 @@ export const getServerSideProps = async (context: any) => {
   const lyrics = data?.find((item: any) => item.id === id);
 
   const relatedData = data.filter((item: any) => {
-    if (item.artistName?.includes(lyrics.artistName)) {
+    if (item.artistName?.includes(lyrics?.artistName)) {
       return item;
     }
   });

@@ -120,7 +120,7 @@ const AlbumUploadForm = () => {
               type="file"
               multiple
               name="myImage"
-              accept="image/jpeg, image/png"
+              accept="image/jpeg, image/png, image/webp"
               onChange={handleImageSubmit}
               required
               className="mb-6 mt-1"
