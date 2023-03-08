@@ -7,19 +7,13 @@ const songs = require("../routes/songs");
 const albums = require("../routes/album");
 const artists = require("../routes/artist");
 const playlists = require("../routes/playlist");
-
+const helmet = require("helmet");
 require("dotenv").config();
 
 const app = express();
 app.use(express.json({ limit: "50mb" }));
-
-const corsOptions = {
-  origin: "*",
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(cors());
 
 const port = process.env.PORT || 1000;
 const uri = process.env.MONGODB_URI;

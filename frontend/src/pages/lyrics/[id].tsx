@@ -11,6 +11,7 @@ import { RootState } from "@/store/store";
 import { ISong } from "@/common/models/interfaces";
 import { shuffle } from "@/common/hooks/shuffleArray";
 import RelatedPost from "@/components/common/RelatedPost";
+import { FacebookShareButton } from "react-share";
 
 type Props = {
   lyrics: ISong;
