@@ -13,7 +13,11 @@ require("dotenv").config();
 const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(cors({ origin: true }));
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 const port = process.env.PORT || 1000;
 const uri = process.env.MONGODB_URI;
