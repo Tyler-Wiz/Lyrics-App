@@ -7,17 +7,18 @@ const songs = require("../routes/songs");
 const albums = require("../routes/album");
 const artists = require("../routes/artist");
 const playlists = require("../routes/playlist");
-const helmet = require("helmet");
+
 require("dotenv").config();
 
 const app = express();
 app.use(express.json({ limit: "50mb" }));
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+app.use(
+  cors({
+    origin: "https://plug.tooxclusive.com/",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 const port = process.env.PORT || 1000;
 const uri = process.env.MONGODB_URI;
