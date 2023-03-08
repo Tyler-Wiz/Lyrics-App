@@ -15,7 +15,7 @@ app.use(express.json({ limit: "50mb" }));
 
 app.use(
   cors({
-    origin: "https://plug.tooxclusive.com/",
+    origin: "https://plug.tooxclusive.com",
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
