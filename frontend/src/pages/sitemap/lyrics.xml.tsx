@@ -17,6 +17,8 @@ export const getServerSideProps: GetServerSideProps<{}> = async (ctx: any) => {
   };
 };
 
+const date = new Date();
+
 const generateLyricsSitemap = async () => {
   const data = await getSongs();
   const pages = data.reverse();
@@ -27,7 +29,7 @@ const generateLyricsSitemap = async () => {
      return `
     <url>
     <loc>https://plug.tooxclusive.com/lyrics/${page.id}</loc>
-    <lastmod>${page.updatedAt ? page.updatedAt : "2023-02-10"}</lastmod>
+    <lastmod>${date}}</lastmod>
     <changefreq>Hourly</changefreq>
     <priority>1.0</priority>
   </url>`;
