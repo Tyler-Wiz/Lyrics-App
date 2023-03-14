@@ -34,8 +34,8 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Mongo DB connect succesful"))
-  .catch((error) => console.log("Mongo DB connect succesful", error));
+  .then(() => console.log("Mongo DB connect successful"))
+  .catch((error) => console.log("Mongo DB connect successful", error));
 
 app.options("*", cors());
 app.use("/register", registerUser);
