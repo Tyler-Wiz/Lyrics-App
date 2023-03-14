@@ -18,6 +18,13 @@ export const getServerSideProps: GetServerSideProps<{}> = async (ctx: any) => {
 };
 
 const date = new Date();
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+
+let xmlDate = `${year}-${month}-${day}`;
+
+console.log(xmlDate);
 
 const generateLyricsSitemap = async () => {
   const data = await getSongs();
@@ -29,7 +36,7 @@ const generateLyricsSitemap = async () => {
      return `
     <url>
     <loc>https://plug.tooxclusive.com/lyrics/${page.id}</loc>
-    <lastmod>${date}}</lastmod>
+    <lastmod>${xmlDate}</lastmod>
     <changefreq>Hourly</changefreq>
     <priority>1.0</priority>
   </url>`;

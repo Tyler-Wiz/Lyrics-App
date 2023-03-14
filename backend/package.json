@@ -6,6 +6,7 @@
   "engines": {
     "node": "18.x"
   },
+  "type": "module",
   "scripts": {
     "server": "nodemon server.js",
     "start": "node src/server.js"
