@@ -22,32 +22,30 @@ const Layout: FC<Props> = ({ title, children, content }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex gap-2">
-        <header className="md:w-[18%] md:fixed md:block hidden h-screen z-[9999]">
+        <header
+          className="md:w-[18%] md:fixed md:block hidden h-screen"
+          style={{ zIndex: 999 }}>
           <Nav />
         </header>
         <div className="md:w-[82%] md:left-[18%] w-full relative dark:bg-black dark:text-primary">
           <section className="flex justify-center items-center">
             <TopNav />
           </section>
-          <div className="z-[9998]">
-            <Adsense
-              client="ca-pub-1115876871453816"
-              slot="1282142215"
-              style={{ display: "block" }}
-              layout="in-article"
-              format="fluid"
-            />
-          </div>
+          <Adsense
+            client="ca-pub-1115876871453816"
+            slot="1282142215"
+            style={{ display: "block" }}
+            layout="in-article"
+            format="fluid"
+          />
           <main className="z-50">{children}</main>
-          <div className="z-[9998]">
-            <Adsense
-              client="ca-pub-1115876871453816"
-              slot="1282142215"
-              style={{ display: "block" }}
-              layout="in-article"
-              format="fluid"
-            />
-          </div>
+          <Adsense
+            client="ca-pub-1115876871453816"
+            slot="1282142215"
+            style={{ display: "block" }}
+            layout="in-article"
+            format="fluid"
+          />
           <footer></footer>
         </div>
       </div>
