@@ -11,7 +11,7 @@ import { RootState } from "@/store/store";
 import { ISong } from "@/common/models/interfaces";
 import { shuffle } from "@/common/hooks/shuffleArray";
 import RelatedPost from "@/components/common/RelatedPost";
-import { FacebookShareButton } from "react-share";
+import { Adsense } from "@ctrl/react-adsense";
 
 type Props = {
   lyrics: ISong;
@@ -63,19 +63,19 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
           </div>
         </div>
       </div>
-      <ins
-        className="adsbygoogle"
-        style={{ display: "block" }}
-        data-ad-client="ca-pub-1115876871453816"
-        data-ad-slot="1282142215"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
       <div className="md:grid md:grid-cols-6 gap-10 p-10 flex flex-col justify-center font-Poppins">
         <div className="lyrics font-Poppins text-center md:text-justify col-span-4">
           {parse(lyrics.lyrics)}
         </div>
         <div className="col-span-2">
           <RelatedPost data={related} />
+          <Adsense
+            client="ca-pub-1115876871453816"
+            slot="1282142215"
+            style={{ display: "block" }}
+            layout="in-article"
+            format="fluid"
+          />
         </div>
       </div>
     </Layout>

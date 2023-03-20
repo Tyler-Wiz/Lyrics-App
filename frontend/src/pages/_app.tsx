@@ -18,10 +18,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1115876871453816"
-        crossOrigin="anonymous"></Script>
-      <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=$G-L4JQYGRK70`}
       />

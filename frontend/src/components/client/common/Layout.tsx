@@ -5,6 +5,7 @@ import { year } from "@/common/hooks/getYear";
 import Nav from "./Nav";
 import Script from "next/script";
 import Footer from "./Footer";
+import { Adsense } from "@ctrl/react-adsense";
 
 type Props = {
   title: string;
@@ -21,7 +22,6 @@ const Layout: FC<Props> = ({ title, children, content }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <div className="flex gap-2">
         <header className="md:w-[18%] md:fixed md:block hidden h-screen">
           <Nav />
@@ -30,6 +30,13 @@ const Layout: FC<Props> = ({ title, children, content }) => {
           <section className="flex justify-center items-center">
             <TopNav />
           </section>
+          <Adsense
+            client="ca-pub-1115876871453816"
+            slot="1282142215"
+            style={{ display: "block" }}
+            layout="in-article"
+            format="fluid"
+          />
           <main className="z-50">{children}</main>
           <footer></footer>
         </div>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ctrl/react-adsense": "^1.6.1",
     "@hookform/resolvers": "^2.9.10",
     "@next/font": "13.1.5",
     "@reduxjs/toolkit": "^1.9.2",
