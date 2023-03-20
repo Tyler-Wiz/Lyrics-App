@@ -23,7 +23,7 @@ const Layout: FC<Props> = ({ title, children, content }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex gap-2">
-        <header className="md:w-[18%] md:fixed md:block hidden h-screen">
+        <header className="md:w-[18%] md:fixed md:block hidden h-screen z-[9999]">
           <Nav />
         </header>
         <div className="md:w-[82%] md:left-[18%] w-full relative dark:bg-black dark:text-primary">
@@ -38,6 +38,13 @@ const Layout: FC<Props> = ({ title, children, content }) => {
             format="fluid"
           />
           <main className="z-50">{children}</main>
+          <Adsense
+            client="ca-pub-1115876871453816"
+            slot="1282142215"
+            style={{ display: "block" }}
+            layout="in-article"
+            format="fluid"
+          />
           <footer></footer>
         </div>
       </div>
