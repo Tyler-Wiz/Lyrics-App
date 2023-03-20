@@ -33,10 +33,6 @@ const Layout: FC<Props> = ({ title, children, content }) => {
                     gtag('config', 'G-L4JQYGRK70');
                 `}
       </Script>
-      <Script
-        data-ad-client="ca-pub-1115876871453816"
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></Script>
       <div className="flex gap-2">
         <header className="md:w-[18%] md:fixed md:block hidden h-screen">
           <Nav />
