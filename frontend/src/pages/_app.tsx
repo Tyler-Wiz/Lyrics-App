@@ -26,12 +26,6 @@ export default function App({ Component, pageProps }: AppProps) {
           hideProgressBar={true}
           pauseOnHover={false}
         />
-        <Script
-          id="adsbygoogle-init"
-          strategy="afterInteractive"
-          crossOrigin="anonymous"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1115876871453816"
-        />
       </Provider>
     </>
   );

@@ -15,12 +15,10 @@ type Props = {
 const Layout: FC<Props> = ({ title, children, content }) => {
   return (
     <>
-      <Head>
-        <title className="capitalize">{`${title} « tooXclusive`}</title>
-        <meta name="description" content={`${content} ${year} « tooXclusive`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Script
+        data-ad-client="ca-pub-1115876871453816"
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?"></Script>
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=$G-L4JQYGRK70`}
@@ -33,6 +31,13 @@ const Layout: FC<Props> = ({ title, children, content }) => {
                     gtag('config', 'G-L4JQYGRK70');
                 `}
       </Script>
+      <Head>
+        <title className="capitalize">{`${title} « tooXclusive`}</title>
+        <meta name="description" content={`${content} ${year} « tooXclusive`} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <div className="flex gap-2">
         <header className="md:w-[18%] md:fixed md:block hidden h-screen">
           <Nav />
