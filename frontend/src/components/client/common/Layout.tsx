@@ -3,7 +3,6 @@ import React, { FC } from "react";
 import TopNav from "./TopNav";
 import { year } from "@/common/hooks/getYear";
 import Nav from "./Nav";
-import Script from "next/script";
 import Footer from "./Footer";
 import { Adsense } from "@ctrl/react-adsense";
 
@@ -30,21 +29,25 @@ const Layout: FC<Props> = ({ title, children, content }) => {
           <section className="flex justify-center items-center">
             <TopNav />
           </section>
-          <Adsense
-            client="ca-pub-1115876871453816"
-            slot="1282142215"
-            style={{ display: "block" }}
-            layout="in-article"
-            format="fluid"
-          />
+          <div className="z-[9998]">
+            <Adsense
+              client="ca-pub-1115876871453816"
+              slot="1282142215"
+              style={{ display: "block" }}
+              layout="in-article"
+              format="fluid"
+            />
+          </div>
           <main className="z-50">{children}</main>
-          <Adsense
-            client="ca-pub-1115876871453816"
-            slot="1282142215"
-            style={{ display: "block" }}
-            layout="in-article"
-            format="fluid"
-          />
+          <div className="z-[9998]">
+            <Adsense
+              client="ca-pub-1115876871453816"
+              slot="1282142215"
+              style={{ display: "block" }}
+              layout="in-article"
+              format="fluid"
+            />
+          </div>
           <footer></footer>
         </div>
       </div>

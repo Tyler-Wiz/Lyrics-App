@@ -24,7 +24,7 @@ const NavData = [
 
 const Nav = () => {
   return (
-    <nav className="h-screen shadow-xl md:flex flex-col py-12 bg-navbackground dark:bg-lightGrey dark:text-primary justify-between font-Crimson px-6">
+    <nav className="h-screen shadow-xl md:flex flex-col py-12 bg-navbackground dark:bg-lightGrey dark:text-primary justify-between font-Crimson px-6 z-[9999]">
       <div>
         <Link href="/">
           <div className="w-24 h-auto mx-auto">
