@@ -69,13 +69,6 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
         </div>
         <div className="col-span-2">
           <RelatedPost data={related} />
-          <Adsense
-            client="ca-pub-1115876871453816"
-            slot="1282142215"
-            style={{ display: "block" }}
-            layout="in-article"
-            format="fluid"
-          />
         </div>
       </div>
     </Layout>
