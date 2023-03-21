@@ -31,13 +31,6 @@ const Layout: FC<Props> = ({ title, children, content }) => {
           <section className="flex justify-center items-center">
             <TopNav />
           </section>
-          <Adsense
-            client="ca-pub-1115876871453816"
-            slot="1282142215"
-            style={{ display: "block" }}
-            layout="in-article"
-            format="fluid"
-          />
           <main className="z-50">{children}</main>
           <Adsense
             client="ca-pub-1115876871453816"
