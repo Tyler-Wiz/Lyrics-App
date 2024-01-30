@@ -6,7 +6,7 @@ const songSchema = new mongoose.Schema(
     artistName: { type: String, required: true },
     artwork: { type: String, required: true },
     category: { type: String },
-    id: { type: String, required: true },
+    __id__: { type: String, required: true },
     lyrics: { type: String, required: true },
     playlist: { type: String },
     tag: { type: String },

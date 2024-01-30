@@ -1,10 +1,8 @@
-const express = require("express");
 const { Artist } = require("../models/artists");
 const cloudinary = require("../helpers/cloudinary");
 const joi = require("joi");
 
-const router = express.Router();
-router.post("/", async (req, res) => {
+exports.create = async (req, res) => {
   const { id, name, tag, url } = req.body.data;
   try {
     if (url) {
@@ -25,18 +23,18 @@ router.post("/", async (req, res) => {
   } catch (error) {
     if (error) res.status(400).send(error);
   }
-});
+};
 
-router.get("/", async (req, res) => {
+exports.read = async (req, res) => {
   try {
     const artists = await Artist.find();
     res.status(200).send(artists);
   } catch (error) {
     res.status(500).send(error.reponse.data);
   }
-});
+};
 
-router.put("/", async (req, res) => {
+exports.update = async (req, res) => {
   const schema = joi.object({
     _id: joi.string().required(),
     name: joi.string().required(),
@@ -55,24 +53,12 @@ router.put("/", async (req, res) => {
     const mondoId = req.body.data._id;
     try {
       let updated = await Artist.findByIdAndUpdate(mondoId, {
-        _id: req.body.data._id,
-        album: req.body.data.album,
-        artwork: req.body.data.artwork,
-        artistName: req.body.data.artistName,
-        id: req.body.data.id,
-        category: req.body.data.category,
-        lyrics: req.body.data.lyrics,
-        playlist: req.body.data.playlist,
-        trackName: req.body.data.trackName,
-        youtube: req.body.data.youtube,
-        tag: req.body.data.tag,
+        ...req.body.data,
       });
       updated = await updated.save();
       res.status(200).send("successful");
     } catch (error) {
-      if (error) res.status(500).send(error.reponse.data);
+      if (error) res.status(500).send(error.response.data);
     }
   }
-});
-
-module.exports = router;
+};

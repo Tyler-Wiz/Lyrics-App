@@ -1,12 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const registerUser = require("../routes/registerUser");
-const loginUser = require("../routes/loginUser");
-const songs = require("../routes/songs");
-const albums = require("../routes/album");
-const artists = require("../routes/artist");
-const playlists = require("../routes/playlist");
+const authRouter = require("./routes/auth");
+const songs = require("./routes/songs");
+const albums = require("./routes/album");
+const artists = require("./routes/artist");
+const playlists = require("./routes/playlist");
 
 require("dotenv").config();
 
@@ -15,12 +14,12 @@ app.use(express.json({ limit: "50mb" }));
 
 app.use(
   cors({
-    origin: "https://plug.tooxclusive.com",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 
-const port = process.env.PORT || 1000;
+const port = process.env.PORT || 4001;
 const uri = process.env.MONGODB_URI;
 app.listen(port, console.log(`Server is running on port ${port}`));
 
@@ -38,8 +37,7 @@ mongoose
   .catch((error) => console.log("Mongo DB connect successful", error));
 
 app.options("*", cors());
-app.use("/register", registerUser);
-app.use("/login", loginUser);
+app.use("/", authRouter);
 app.use("/songs", songs);
 app.use("/albums", albums);
 app.use("/artists", artists);

@@ -1,10 +1,7 @@
-const express = require("express");
 const cloudinary = require("../helpers/cloudinary");
 const { Playlist } = require("../models/playlist");
 
-const router = express.Router();
-
-router.post("/", async (req, res) => {
+exports.create = async (req, res) => {
   const { name, artwork } = req.body.data;
   try {
     if (artwork) {
@@ -23,15 +20,13 @@ router.post("/", async (req, res) => {
   } catch (error) {
     if (error) res.status(400).send(error);
   }
-});
+};
 
-router.get("/", async (req, res) => {
+exports.read = async (req, res) => {
   try {
     const playlists = await Playlist.find();
     res.status(200).send(playlists);
   } catch (error) {
-    res.status(500).send(error.reponse.data);
+    res.status(500).send(error.response.data);
   }
-});
-
-module.exports = router;
+};
