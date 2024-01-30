@@ -21,8 +21,8 @@ const Favorite = () => {
           <div className="w-full mx-auto grid grid-cols-2 sm:grid-cols-5 gap-6 px-5 md:px-10 mt-6 font-Crimson dark:text-primary">
             {items.map((item) => {
               return (
-                <div key={item.id} className="my-4">
-                  <Link href={`${"/lyrics/" + item.id}`}>
+                <div key={item.__id__} className="my-4">
+                  <Link href={`${"/lyrics/" + item.__id__}`}>
                     <img
                       src={item.artwork}
                       alt="artwork"

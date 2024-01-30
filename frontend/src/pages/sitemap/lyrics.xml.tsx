@@ -26,7 +26,7 @@ const generateLyricsSitemap = async () => {
    .map((page: ISong) => {
      return `
     <url>
-    <loc>https://plug.tooxclusive.com/lyrics/${page.id}</loc>
+    <loc>https://plug.tooxclusive.com/lyrics/${page.__id__}</loc>
     <lastmod>${page.updatedAt ? page.updatedAt : "2023-02-10"}</lastmod>
     <changefreq>Hourly</changefreq>
     <priority>1.0</priority>

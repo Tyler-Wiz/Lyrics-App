@@ -25,7 +25,7 @@ const generateArtistSitemap = async () => {
    .map((page: IAlbum) => {
      return `
     <url>
-    <loc>https://plug.tooxclusive.com/album/${page.id}</loc>
+    <loc>https://plug.tooxclusive.com/album/${page.__id__}</loc>
     <lastmod>${page.updatedAt ? page.updatedAt : "2023-02-16"}</lastmod>
     <changefreq>Hourly</changefreq>
     <priority>1.0</priority>

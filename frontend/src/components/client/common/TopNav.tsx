@@ -47,7 +47,7 @@ const TopNav = () => {
           className="text-black font-light dark:text-primary text-xl capitalize absolute top-[28%] right-3"
         />
         <div className="hidden group-hover:block z-50">
-          <div className="w-full px-3 h-auto max-h-72 mx-auto overflow-scroll flex flex-col font-Crimson gap-2 dark:text-primary dark:bg-black absolute bg-navbackground shadow-md rounded-lg">
+          <div className="w-full px-3 h-auto max-h-72 overflow-y-auto mx-auto flex flex-col font-Crimson gap-2 dark:text-primary dark:bg-black absolute bg-navbackground shadow-md rounded-lg">
             {filteredData &&
               filteredData.map((item: any) => (
                 <div
@@ -56,7 +56,7 @@ const TopNav = () => {
                     setFilteredData([]);
                     setWordEntered("");
                   }}>
-                  <Link href={`${"/lyrics/" + item.id}`}>
+                  <Link href={`${"/lyrics/" + item.__id__}`}>
                     <div className="py-2 flex gap-2 items-center">
                       <div className="relative w-12">
                         <img

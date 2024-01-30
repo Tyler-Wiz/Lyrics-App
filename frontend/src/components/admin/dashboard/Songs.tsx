@@ -39,8 +39,6 @@ const Songs: FC<Props> = ({ data }) => {
     }
   };
 
-  console.log(filteredData.length);
-
   const pageProducts = filteredData.slice(
     indexOfFirstProduct,
     indexOfLastProduct
@@ -110,7 +108,7 @@ const Songs: FC<Props> = ({ data }) => {
               <td className="px-6 py-2 font-medium">{item.playlist}</td>
               <td className="px-6 py-2 font-medium">{item.tag}</td>
               <td className="px-6 py-2 text-right">
-                <Link href={`${"/dashboard/edit/" + item._id}`}>
+                <Link href={`${"/dashboard/edit/" + item.__id__}`}>
                   <BiEditAlt size={23} className=" text-error" />
                 </Link>
               </td>

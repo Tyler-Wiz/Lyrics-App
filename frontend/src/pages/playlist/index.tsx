@@ -22,7 +22,7 @@ const Index: NextPage<Props> = ({ data }) => {
             <div key={index}>
               <Link href={`${"/playlist/" + item.name}`}>
                 <img
-                  src={item.artwork}
+                  src={item.imageUrl}
                   alt="playlist image"
                   className="rounded-lg shadow-lg hover:scale-95 cursor-pointer"
                 />

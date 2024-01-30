@@ -24,7 +24,7 @@ const RenderAlbumList: FC<Props> = ({
       </h2>
       <div className="w-full mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 px-5 md:px-10 mt-6 font-Crimson dark:text-primary">
         {data.slice(initialNumber, finalNumber).map((item: IAlbum, index) => (
-          <Link key={index} href={`${"/album/" + item.id}`}>
+          <Link key={index} href={`${"/album/" + item.__id__}`}>
             <div>
               <img
                 src={item.artwork}

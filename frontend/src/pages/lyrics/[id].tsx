@@ -11,7 +11,6 @@ import { RootState } from "@/store/store";
 import { ISong } from "@/common/models/interfaces";
 import { shuffle } from "@/common/hooks/shuffleArray";
 import RelatedPost from "@/components/common/RelatedPost";
-import { Adsense } from "@ctrl/react-adsense";
 
 type Props = {
   lyrics: ISong;
@@ -24,7 +23,7 @@ const LyricsPage: NextPage<Props> = ({ lyrics, related }) => {
 
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.favorite.items);
-  const ItemIndex = items.find((x) => x.id === lyrics.id);
+  const ItemIndex = items.find((x) => x.__id__ === lyrics.__id__);
 
   return (
     <Layout
@@ -86,7 +85,7 @@ export const getServerSideProps = async (context: any) => {
   const { params } = context;
   const { id } = params;
   const data = await getSongs();
-  const lyrics = data?.find((item: any) => item.id === id);
+  const lyrics = data?.find((item: any) => item.__id__ === id);
 
   const relatedData = data.filter((item: any) => {
     if (item.artistName?.includes(lyrics?.artistName)) {

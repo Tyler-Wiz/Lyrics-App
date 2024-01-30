@@ -16,7 +16,7 @@ const NewSingle: FC<Props> = ({ data }) => {
       <div className="w-full mx-auto grid grid-cols-2 md:grid-cols-6 gap-6 px-5 md:px-10 mt-6 mb-20 font-Crimson">
         {data.slice(0, 12).map((item: ISong) => (
           <div key={item.id}>
-            <Link href={`${"/lyrics/" + item.id}`}>
+            <Link href={`${"/lyrics/" + item.__id__}`}>
               <div className="md:w-40 md:h-40 w-auto h-48 ">
                 <img
                   src={item.artwork}

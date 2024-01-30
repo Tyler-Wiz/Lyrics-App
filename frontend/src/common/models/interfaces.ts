@@ -4,7 +4,7 @@ export interface ISong {
   artwork: string;
   category: string;
   id: string;
-  _id: string;
+  __id__: string;
   lyrics: string;
   playlist: string;
   tag: string;
@@ -20,7 +20,7 @@ export interface IArtists {
   name: string;
   tag: string;
   url: string;
-  _id: string;
+  __id__: string;
   updatedAt: any;
 }
 
@@ -28,6 +28,7 @@ export interface IPlaylist {
   artwork: string;
   name: string;
   _id: string;
+  imageUrl: string;
 }
 
 export interface IAlbum {
@@ -35,7 +36,7 @@ export interface IAlbum {
   artistName: string;
   artwork: string;
   tag: string;
-  id: string;
+  __id__: string;
   updatedAt: any;
 }
 

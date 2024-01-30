@@ -20,7 +20,7 @@ const Index: NextPage<Props> = ({ artists }) => {
         <div className="w-full mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 px-5 md:px-10 mt-6 font-Crimson dark:text-primary">
           {artists.map((item) => (
             <div key={item.id} className="my-4">
-              <Link href={`${"/artist/" + item.id}`}>
+              <Link href={`${"/artist/" + item.__id__}`}>
                 <div className="w-48 h-48">
                   <img
                     src={item.url}

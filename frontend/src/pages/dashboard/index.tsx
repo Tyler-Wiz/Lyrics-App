@@ -34,7 +34,7 @@ export default Index;
 
 export async function getServerSideProps() {
   const data = await getSongs();
-  const newdata = data.reverse().slice(0, 100);
+  const newdata = data.reverse();
 
   return {
     props: { data: newdata },

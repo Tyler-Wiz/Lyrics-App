@@ -39,7 +39,7 @@ const ArtistLyrics: FC<Props> = ({ data }) => {
             className="flex gap-2 items-center justify-center py-1">
             <p className="w-[2%] text-sm text-lightBlack">{number}</p>
             <Link
-              href={`${"/lyrics/" + item.id}`}
+              href={`${"/lyrics/" + item.__id__}`}
               className="w-[13%] md:w-[5%]">
               <div className="md:w-12 md:h-12 h-12 w-12">
                 <img src={item.artwork} alt="artist Image" />

@@ -17,8 +17,6 @@ const EditSong: FC<Props> = ({ lyrics }) => {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
 
-  console.log(lyrics);
-
   let router = useRouter();
   useEffect(() => {
     if (success === "successful") {
@@ -106,7 +104,7 @@ const EditSong: FC<Props> = ({ lyrics }) => {
                 lyrics: e.target.value,
               });
             }}
-            className="w-full h-[450px] my-3 outline-none text-md lyrics rounded-lg"></textarea>
+            className="w-full h-[600px] my-3 outline-none text-md lyrics rounded-lg resize-none p-5"></textarea>
         </div>
         <div className="w-2/5 mt-14">
           <div className="flex gap-10">
@@ -198,7 +196,7 @@ export const getServerSideProps = async (context: any) => {
   const { params } = context;
   const { id } = params;
   const data = await getSongs();
-  const lyrics = data?.find((item: any) => item._id === id);
+  const lyrics = data?.find((item: any) => item.__id__ === id);
 
   return {
     props: {

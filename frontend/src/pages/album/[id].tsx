@@ -14,8 +14,8 @@ type Props = {
 const AlbumPage: NextPage<Props> = ({ album, albumSongs }) => {
   return (
     <Layout
-      title={`${album[0].albumName} by ${album[0].artistName} Lyrics And TrackList`}
-      content={`Latest ${album[0].albumName} lyrics`}>
+      title={`${album[0].AlbumName} by ${album[0].artistName} Lyrics And TrackList`}
+      content={`Latest ${album[0].AlbumName} lyrics`}>
       <section>
         <div className="text-xs px-10 mt-10 flex flex-col md:flex-row items-center font-Poppins gap-2">
           <div className="w-72 h-72">
@@ -27,7 +27,7 @@ const AlbumPage: NextPage<Props> = ({ album, albumSongs }) => {
           </div>
           <div className="md:w-1/4 flex flex-col items-center md:items-start text-center md:text-justify capitalize text-lg">
             <p className="text-xl my-1 font-medium">{album[0].artistName}</p>
-            <p>{album[0].albumName}</p>
+            <p>{album[0].AlbumName}</p>
             <div className="my-2 gap-3">
               <p className="text-lg">
                 {albumSongs.length}
@@ -55,13 +55,13 @@ export const getServerSideProps = async (context: any) => {
   const albumData = await getAlbums();
 
   const album = albumData.filter((item: any) => {
-    if (item.id?.includes(id)) {
+    if (item.__id__?.includes(id)) {
       return item;
     }
   });
 
   const albumSongs = data.filter((item: any) => {
-    if (item.album?.includes(album[0].albumName)) {
+    if (item.album?.includes(album[0].AlbumName)) {
       return item;
     }
   });

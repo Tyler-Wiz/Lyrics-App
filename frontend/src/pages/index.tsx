@@ -51,7 +51,6 @@ export const getServerSideProps: GetServerSideProps<{}> = async ({
   });
 
   const trending = trendingdata.slice(0, 10);
-
   return {
     props: {
       newLyrics,

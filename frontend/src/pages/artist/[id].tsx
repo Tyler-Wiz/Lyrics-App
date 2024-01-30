@@ -74,7 +74,7 @@ export const getServerSideProps = async (context: any) => {
   const albumData = await getAlbums();
 
   const artist = artistData.filter((item: any) => {
-    if (item.id?.includes(id)) {
+    if (item.__id__?.includes(id)) {
       return item;
     }
   });

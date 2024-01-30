@@ -28,11 +28,11 @@ export const favoriteSlice = createSlice({
     },
     removeFavorite: (state, action: PayloadAction<ISong>) => {
       const itemIndex = state.items.findIndex(
-        (x) => x.id === action.payload.id
+        (x) => x.__id__ === action.payload.__id__
       );
       if (itemIndex >= 0) {
         const newCartItems = state.items.filter(
-          (x) => x.id !== action.payload.id
+          (x) => x.__id__ !== action.payload.__id__
         );
         state.items = newCartItems;
         localStorage.setItem("items", JSON.stringify(state.items));
