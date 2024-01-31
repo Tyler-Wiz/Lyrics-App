@@ -94,7 +94,7 @@ const Artist: FC<Props> = ({ data }) => {
                   <td className="px-6 py-2 font-medium">{item.name}</td>
                   <td className="px-6 py-2 font-medium">{item.tag}</td>
                   <td className="px-6 py-2 text-right">
-                    <Link href={`${"/dashboard/artist/" + item._id}`}>
+                    <Link href={`${"/dashboard/artist/" + item.__id__}`}>
                       <BiEditAlt size={23} className=" text-error" />
                     </Link>
                   </td>

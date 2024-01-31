@@ -16,7 +16,7 @@ const RenderLyricsList: FC<Props> = ({ data, header }) => {
       </h2>
       <div className="w-full mx-auto grid grid-cols-2 sm:grid-cols-5 gap-6 px-5 md:px-10 mt-6 font-Crimson dark:text-primary">
         {data.map((item) => (
-          <div key={item.id} className="my-4">
+          <div key={item.__id__} className="my-4">
             <Link href={`${"/lyrics/" + item.__id__}`}>
               <img
                 src={item.artwork}
